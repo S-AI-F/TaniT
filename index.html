@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Blurry Space</title>
+<meta name="description" content="For more than a decade I lived in the blurry space between data scientist, developer, and product manager. Because of AI, it has quietly become a place where anyone can stand.">
+
+<!-- For rich link previews, replace the URL below with your published address, e.g. https://yourname.github.io/blurry-space-hero.svg -->
+<meta property="og:title" content="The Blurry Space">
+<meta property="og:description" content="A decade between data science, code, and product — and how AI made that intersection a place anyone can stand.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="blurry-space-geometric.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#f1ede4;
+    --ink:#2b2622;
+    --soft:#5c544b;
+    --muted:#8a8378;
+    --line:rgba(43,38,34,.10);
+    --coral:#e8765a; --amber:#cf962f; --teal:#2f8a78; --slate:#4f6fa0; --plum:#7a5a9e;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:20px;
+    line-height:1.72;
+    font-weight:400;
+  }
+  /* subtle paper grain */
+  body::after{
+    content:"";
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    mix-blend-mode:multiply; opacity:.55;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  }
+  .wrap{max-width:740px;margin:0 auto;padding:0 26px 96px;position:relative;z-index:2;}
+
+  .kicker{
+    font-family:"Newsreader",serif;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    font-size:12.5px;
+    color:var(--muted);
+    margin:54px 0 18px;
+    font-weight:500;
+  }
+  h1{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:600;
+    font-size:clamp(2.6rem,7vw,4rem);
+    line-height:1.02;
+    letter-spacing:-.015em;
+    margin:0 0 8px;
+  }
+
+  figure{margin:38px 0;}
+  figure img{
+    display:block;width:100%;height:auto;
+    border:1px solid var(--line);
+    border-radius:6px;
+  }
+  figure.hero{margin:30px 0 6px;}
+
+  .lede p{
+    font-size:1.22rem;
+    color:var(--soft);
+    line-height:1.66;
+  }
+  .lede p:first-of-type{font-style:italic;}
+
+  h2{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:600;
+    font-size:1.65rem;
+    line-height:1.2;
+    letter-spacing:-.01em;
+    margin:3.2rem 0 .9rem;
+    padding-top:.4rem;
+  }
+  p{margin:0 0 1.25rem;}
+  strong{font-weight:600;}
+
+  ul.feat{list-style:none;margin:0 0 1.4rem;padding:0;}
+  ul.feat li{position:relative;padding-left:24px;margin:0 0 .85rem;}
+  ul.feat li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:9px;height:9px;border-radius:2px;
+  }
+  ul.feat li:nth-child(1)::before{background:var(--coral);}
+  ul.feat li:nth-child(2)::before{background:var(--teal);}
+  ul.feat li:nth-child(3)::before{background:var(--slate);}
+
+  .end{
+    margin-top:2.6rem;font-style:italic;color:var(--soft);
+    border-top:1px solid var(--line);padding-top:1.6rem;
+  }
+  ::selection{background:#e8765a33;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">On AI, Product &amp; the In-Between</p>
+  <h1>The Blurry Space</h1>
+
+  <figure class="hero">
+    <img src="blurry-space-geometric.svg" alt="Five overlapping coloured circles labelled Product Managers, Designers, Data Scientists, Developers and AI Engineers, meeting in a soft central zone.">
+  </figure>
+
+  <div class="lede">
+    <p>For more than a decade I lived in the blurry space between data scientist, developer, and product manager. A delicate place to stand. You never quite belonged to any one camp, and you frequently found yourself justifying why you were straddling the lines.</p>
+    <p>But now, because of AI, that blurry space has quietly become a place where anyone can stand.</p>
+  </div>
+
+  <h2>🤨 AI Skeptic</h2>
+  <p>I started working in AI in 2013, during my PhD. Back then, it wasn’t a hot topic. There was no hype, no headlines, just math, raw data, and a massive exercise in patience.</p>
+  <p>The work was deeply based in classical statistics. We would take a dataset and attempt to model its behavior using the traditional toolkit: regressions, random forests, support vector machines, and early neural networks. It was intellectually fascinating, but we were constantly limited by training data quality, limited compute capacity, and the black box of model explainability.</p>
+  <p>So I stayed a skeptic. Firmly in the symbolic AI camp. My belief was simple: you can't brute-force your way to intelligence. Pile up a neural network, feed it the internet, and all you get is a confident mimic. A system reproducing patterns it has already seen. Never understanding. Just predicting the next token. A “stochastic parrot.”</p>
+
+  <h2>💥 When everything shifted</h2>
+  <p>Then generative AI happened. And it was hard to look away.</p>
+  <p>It started with a 2017 paper, “Attention Is All You Need,” which gave us the Transformer, the architecture behind almost every model today, including BERT and GPT. The world only noticed when ChatGPT arrived in 2022. A simple chat box, and within months the fastest-growing app ever.</p>
+  <p>The rest came fast:</p>
+  <ul class="feat">
+    <li><strong>Scale:</strong> RLHF (Reinforcement Learning from Human Feedback) taught models to align with human intent, while Mixture-of-Experts (MoE) architectures optimized compute so models only woke up the components they actually needed.</li>
+    <li><strong>Multimodality:</strong> Systems evolved to seamlessly process text, audio, images, and video inside a single context window.</li>
+    <li><strong>Agentic:</strong> We moved from basic prompting to reasoning models that explicitly “think” before answering, and agentic workflows where models independently use tools to execute multi-step tasks.</li>
+  </ul>
+  <p>Frameworks like LangChain and Anthropic's Model Context Protocol turned models into something you could actually build with.</p>
+  <p>I'm still not sure it's “intelligence” in the way I once meant the word. I think it's a different kind. But the practical implications are real, and they are radically reshaping how we create.</p>
+
+  <h2>🛠️ Building with AI: The Product Management Shift</h2>
+  <p>For a product person, these tools collapse the whole build-measure-learn loop.</p>
+  <p>Claude Code for fixing bugs and fast prototyping. Cursor for moving fast inside the codebase. Lovable to turn a one-line idea into a working app, no engineering bottleneck. Figma Make and Claude Design for high-fidelity prototypes straight from a prompt. Pipelines that pull insights from surveys, drop summaries into Slack, write them up in Notion and draft PRD in Jira.</p>
+  <p><strong>The Paradigm Shift:</strong> When the friction of building drops to near-zero, the role of the product manager changes fundamentally. You are no longer managing an execution pipeline or tracking delivery velocity; you are managing the clarity of your intent and the definition of quality.</p>
+  <p>At home, I connected Claude to my Obsidian vault to organize my notes and ideas, opening up a completely new dimension of personal learning. I feel like a kid sitting in front of a giant, infinite pile of Lego blocks. Infinite shapes, infinite possibilities and occasionally, a sense of being completely overwhelmed. Every single week brings a new model, a larger context window, a sharper agentic skill, or a new developer tool.</p>
+
+  <figure>
+    <img src="infinite-blocks.svg" alt="A small figure with arms raised in front of colourful lego blocks fanning out into many possible shapes, with faint outline blocks suggesting endless combinations.">
+  </figure>
+
+  <p>People fear AI will destroy jobs. I think the better move is to pick up the tools and build. New work, new capacity, new opportunities.</p>
+
+  <h2>💸 The cost of all this</h2>
+  <p>Because AI is never really free, even when it's free.</p>
+  <p>The world's knowledge is being compressed into a handful of giant models, owned by a handful of companies. They carry the bias of how and what they're trained on. The internet skews Western and English-speaking, and so do they.</p>
+  <p>Then there is the massive energy bills, the staggering growth of data centers, the infrastructure strain, and the hard realities of localized heat and resource consumption. And, of course, there are the darker applications: the rapid integration of these systems into surveillance, defense, and warfare.</p>
+
+  <h2>🛤️ Open source and the other road</h2>
+  <p>This is why open source matters to me. When DeepSeek released R1 under an MIT license, it proved frontier-level reasoning didn't have to live behind one company's API. We need small base models people can train from scratch, on their own data.</p>
+  <p>And I keep one eye on the other road. Symbolic AI.</p>
+  <p>Developments in “World Models” built on architectures like JEPA represent a necessary shift, teaching models how physical reality actually works, rather than just how text flows. I think that we need deeper collaboration between AI engineers, robotics and cognitive science to get past the “parrot” effect and build models that actually reason.</p>
+  <p>So I stay optimistic. I want this to be aimed at education and healthcare. At problems worth solving.</p>
+  <p>In the meantime, I am deeply enjoying this moment in tech history. The frontier between builders, developers, and product managers has gone entirely transparent. The PM can ship a functional prototype. The engineer can spend their cycles deeply thinking about user outcomes. The non-coder can build a self-contained product.</p>
+  <p class="end">The traditional roles are blurring, and that organizational shift might actually be the real revolution. That ambiguous, blurry space I once had to justify has finally become a place where anyone can stand.</p>
+
+</div>
+</body>
+</html>

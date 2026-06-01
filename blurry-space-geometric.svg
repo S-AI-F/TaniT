@@ -1,0 +1,50 @@
+<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <filter id="haze" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.04"/></feComponentTransfer>
+    </filter>
+  </defs>
+
+  <!-- paper background -->
+  <rect width="1200" height="760" fill="#f1ede4"/>
+
+  <!-- overlapping geometric fields -->
+  <g style="mix-blend-mode:multiply" fill-opacity="0.62">
+    <circle cx="600" cy="225" r="150" fill="#e8765a"/>   <!-- Product managers -->
+    <circle cx="728" cy="318" r="150" fill="#5b7fb5"/>   <!-- Data scientists -->
+    <circle cx="679" cy="469" r="150" fill="#46a892"/>   <!-- Developers -->
+    <circle cx="521" cy="469" r="150" fill="#8a6aad"/>   <!-- AI engineers -->
+    <circle cx="472" cy="318" r="150" fill="#e6ad44"/>   <!-- Designers -->
+  </g>
+
+  <!-- the blurry space: soft clearing where everything meets -->
+  <circle cx="600" cy="372" r="92" fill="#f1ede4" fill-opacity="0.55" filter="url(#haze)"/>
+  <circle cx="600" cy="372" r="96" fill="none" stroke="#2c2c2c" stroke-opacity="0.18" stroke-width="1"/>
+
+  <!-- labels placed within each field -->
+  <g fill="#1f1f1f" font-size="20" font-weight="700" letter-spacing="1.2" text-anchor="middle">
+    <text x="600" y="172">PRODUCT</text>
+    <text x="600" y="196">MANAGERS</text>
+
+    <text x="430" y="312">DESIGNERS</text>
+
+    <text x="762" y="300">DATA</text>
+    <text x="762" y="324">SCIENTISTS</text>
+
+    <text x="495" y="500">AI</text>
+    <text x="495" y="524">ENGINEERS</text>
+
+    <text x="705" y="510">DEVELOPERS</text>
+  </g>
+
+  <!-- caption -->
+  <text x="600" y="724" text-anchor="middle" font-size="14" letter-spacing="6" fill="#8a8378">T H E   B L U R R Y   S P A C E</text>
+
+  <!-- subtle grain -->
+  <rect width="1200" height="760" fill="#000000" filter="url(#grain)" style="mix-blend-mode:multiply" opacity="0.5"/>
+</svg>

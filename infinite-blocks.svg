@@ -1,0 +1,77 @@
+<svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" font-family="Inter, Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .blk { mix-blend-mode: multiply; fill-opacity: 0.66; }
+    </style>
+    <filter id="haze" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.04"/></feComponentTransfer>
+    </filter>
+
+    <g id="brick">
+      <rect x="0" y="8" width="58" height="30" rx="3" fill="currentColor"/>
+      <circle cx="16" cy="8" r="6.5" fill="currentColor"/>
+      <circle cx="42" cy="8" r="6.5" fill="currentColor"/>
+    </g>
+    <g id="brickO">
+      <rect x="0" y="8" width="58" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="16" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="42" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <!-- paper background -->
+  <rect width="1200" height="760" fill="#f1ede4"/>
+
+  <!-- possibility space -->
+  <ellipse cx="600" cy="290" rx="340" ry="240" fill="#ffffff" opacity="0.45" filter="url(#haze)"/>
+
+  <!-- ghost blocks: the builds not yet made -->
+  <use href="#brickO" color="#5b7fb5" opacity="0.30" transform="translate(355,150) rotate(8)"/>
+  <use href="#brickO" color="#e6ad44" opacity="0.30" transform="translate(820,225) rotate(-10)"/>
+  <use href="#brickO" color="#e8765a" opacity="0.30" transform="translate(845,360) rotate(14)"/>
+  <use href="#brickO" color="#46a892" opacity="0.30" transform="translate(295,360) rotate(-12)"/>
+  <use href="#brickO" color="#8a6aad" opacity="0.30" transform="translate(675,108) rotate(6)"/>
+  <use href="#brickO" color="#46a892" opacity="0.30" transform="translate(495,108) rotate(-5)"/>
+
+  <!-- solid blocks fanning into shapes -->
+  <use href="#brick" class="blk" color="#e8765a" transform="translate(545,150) rotate(-8)"/>
+  <use href="#brick" class="blk" color="#e6ad44" transform="translate(455,205) rotate(13)"/>
+  <use href="#brick" class="blk" color="#46a892" transform="translate(690,180) rotate(9)"/>
+  <use href="#brick" class="blk" color="#5b7fb5" transform="translate(625,245) rotate(-15)"/>
+  <use href="#brick" class="blk" color="#8a6aad" transform="translate(515,300) rotate(7)"/>
+  <use href="#brick" class="blk" color="#e8765a" transform="translate(735,315) rotate(20)"/>
+  <use href="#brick" class="blk" color="#e6ad44" transform="translate(420,330) rotate(-11)"/>
+  <use href="#brick" class="blk" color="#8a6aad" transform="translate(760,250) rotate(16)"/>
+  <use href="#brick" class="blk" color="#e8765a" transform="translate(330,250) rotate(-6)"/>
+  <!-- a little tower -->
+  <use href="#brick" class="blk" color="#46a892" transform="translate(600,352) rotate(-3)"/>
+  <use href="#brick" class="blk" color="#5b7fb5" transform="translate(602,385) rotate(-3)"/>
+
+  <!-- blocks on the floor -->
+  <use href="#brick" class="blk" color="#8a6aad" transform="translate(520,676) rotate(0)"/>
+  <use href="#brick" class="blk" color="#e6ad44" transform="translate(642,679) rotate(-6)"/>
+
+  <!-- floor -->
+  <line x1="420" y1="715" x2="780" y2="715" stroke="#2f2b27" stroke-opacity="0.14" stroke-width="2"/>
+
+  <!-- the kid, looking up, arms raised -->
+  <g stroke="#2f2b27" stroke-width="6" stroke-linecap="round" fill="none">
+    <line x1="600" y1="576" x2="600" y2="634"/>
+    <line x1="600" y1="592" x2="567" y2="565"/>
+    <line x1="600" y1="592" x2="633" y2="565"/>
+    <line x1="600" y1="634" x2="583" y2="684"/>
+    <line x1="600" y1="634" x2="617" y2="684"/>
+  </g>
+  <circle cx="600" cy="555" r="18" fill="#2f2b27"/>
+
+  <!-- caption -->
+  <text x="600" y="734" text-anchor="middle" font-size="14" letter-spacing="5" fill="#8a8378">I N F I N I T E   B L O C K S ,   I N F I N I T E   S H A P E S</text>
+
+  <!-- subtle grain -->
+  <rect width="1200" height="760" fill="#000000" filter="url(#grain)" style="mix-blend-mode:multiply" opacity="0.5"/>
+</svg>
