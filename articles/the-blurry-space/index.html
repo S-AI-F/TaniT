@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Blurry Space — TaniT</title><meta name="description" content="A decade between data science, code, and product — and how AI quietly turned that intersection into a place anyone can stand."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{
+  --paper:#f1ede4; --ink:#2b2622; --soft:#5c544b; --muted:#8a8378;
+  --line:rgba(43,38,34,.10);
+  --coral:#e8765a; --amber:#cf962f; --teal:#2f8a78; --slate:#4f6fa0; --plum:#7a5a9e;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Outfit",sans-serif;font-size:18.5px;line-height:1.68;letter-spacing:.005em;font-weight:400;}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  mix-blend-mode:multiply;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");}
+.wrap{max-width:760px;margin:0 auto;padding:0 26px 110px;position:relative;z-index:2;}
+a{color:inherit;}
+
+/* top bar (inner pages) */
+.topbar{display:flex;justify-content:space-between;align-items:baseline;
+  padding:22px 0 18px;border-bottom:1px solid var(--line);margin-bottom:30px;}
+.topbar .brand{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.3rem;
+  color:var(--ink);text-decoration:none;letter-spacing:-.01em;}
+.nav a{color:var(--soft);text-decoration:none;margin-left:22px;font-size:.95rem;}
+.nav a:hover{color:var(--coral);}
+.nav a.active{color:var(--ink);border-bottom:2px solid var(--coral);padding-bottom:2px;}
+
+/* masthead (landing) */
+.masthead{padding:58px 0 8px;}
+.masthead h1{font-family:"Outfit",sans-serif;font-weight:700;
+  font-size:clamp(3.2rem,11vw,5.4rem);line-height:.95;letter-spacing:-.02em;margin:0;}
+.masthead .sub{font-style:italic;color:var(--soft);font-size:1.25rem;margin:10px 0 0;}
+.masthead .nav{margin:30px 0 0;padding-bottom:24px;border-bottom:1px solid var(--line);
+  display:flex;gap:0;}
+.masthead .nav a{margin:0 26px 0 0;font-size:1.05rem;}
+
+/* tag filter */
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin:30px 0 8px;}
+.chip{font-family:"Outfit",sans-serif;font-size:.85rem;border:1px solid var(--line);
+  background:transparent;color:var(--soft);padding:6px 14px;border-radius:999px;cursor:pointer;
+  transition:all .15s ease;}
+.chip:hover{border-color:var(--ink);color:var(--ink);}
+.chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+/* article feed */
+.feed{list-style:none;padding:0;margin:8px 0 0;}
+.card{display:block;text-decoration:none;color:inherit;padding:28px 0;border-bottom:1px solid var(--line);}
+.card-meta{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);}
+.card-title{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.85rem;line-height:1.12;
+  margin:7px 0 9px;color:var(--ink);transition:color .15s ease;}
+.card:hover .card-title{color:var(--coral);}
+.card-excerpt{color:var(--soft);margin:0 0 14px;font-size:1.05rem;line-height:1.55;}
+.card-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.tag{font-size:.72rem;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 11px;}
+.empty{color:var(--muted);font-style:italic;padding:30px 0;}
+
+/* article body */
+.kicker{text-transform:uppercase;letter-spacing:.22em;font-size:12.5px;color:var(--muted);
+  margin:8px 0 16px;font-weight:500;}
+.article h1{font-family:"Outfit",sans-serif;font-weight:600;
+  font-size:clamp(2.6rem,7vw,4rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 8px;}
+.dateline{font-size:.74rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin:0 0 4px;}
+figure{margin:38px 0;}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;}
+figure.hero{margin:26px 0 6px;}
+.lede p{font-size:1.22rem;color:var(--soft);line-height:1.66;}
+.lede p:first-of-type{font-style:italic;}
+.article h2{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.65rem;line-height:1.2;
+  letter-spacing:-.01em;margin:3.2rem 0 .9rem;}
+.article p{margin:0 0 1.25rem;}
+strong{font-weight:600;}
+ul.feat{list-style:none;margin:0 0 1.4rem;padding:0;}
+ul.feat li{position:relative;padding-left:24px;margin:0 0 .85rem;}
+ul.feat li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:2px;}
+ul.feat li:nth-child(1)::before{background:var(--coral);}
+ul.feat li:nth-child(2)::before{background:var(--teal);}
+ul.feat li:nth-child(3)::before{background:var(--slate);}
+.article .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 4px;}
+.end{margin-top:2.6rem;font-style:italic;color:var(--soft);border-top:1px solid var(--line);padding-top:1.6rem;}
+.signoff{margin-top:2.6rem;padding-top:1.5rem;border-top:1px solid var(--line);
+  font-size:.95rem;color:var(--muted);line-height:1.55;}
+.signoff .name{font-family:"Outfit",sans-serif;font-weight:600;color:var(--ink);font-size:1.1rem;letter-spacing:-.01em;}
+.signoff .date{display:block;margin-top:3px;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;}
+.signoff .made{display:block;margin-top:15px;font-style:italic;}
+
+/* wiki */
+.pagehead{padding:6px 0 2px;}
+.pagehead h1{font-family:"Outfit",sans-serif;font-weight:600;font-size:clamp(2.2rem,6vw,3.2rem);
+  letter-spacing:-.015em;margin:0 0 6px;line-height:1.05;}
+.pagehead .sub{color:var(--soft);font-style:italic;margin:0 0 6px;}
+.wiki-group{margin:36px 0 0;}
+.wiki-group .cat{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);
+  margin:0 0 6px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+.wiki-list{list-style:none;padding:0;margin:0;}
+.wiki-list a{display:block;text-decoration:none;color:inherit;padding:15px 0;border-bottom:1px solid var(--line);}
+.wiki-list .term{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.18rem;color:var(--ink);transition:color .15s ease;}
+.wiki-list a:hover .term{color:var(--coral);}
+.wiki-list .gloss{color:var(--soft);font-size:.97rem;line-height:1.5;margin-top:2px;}
+
+/* concept page */
+.concept .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin:6px 0 8px;}
+.concept h1{font-family:"Outfit",sans-serif;font-weight:600;font-size:clamp(2.2rem,6vw,3.2rem);
+  letter-spacing:-.015em;margin:0 0 18px;line-height:1.05;}
+.concept .def{font-size:1.18rem;color:var(--ink);line-height:1.6;}
+.block{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);}
+.block h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin:0 0 12px;font-weight:600;font-family:"Outfit",sans-serif;}
+.linkchips{display:flex;flex-wrap:wrap;gap:9px;}
+.linkchips a{text-decoration:none;font-size:.9rem;color:var(--soft);border:1px solid var(--line);
+  border-radius:999px;padding:6px 13px;transition:all .15s ease;}
+.linkchips a:hover{border-color:var(--ink);color:var(--ink);}
+.backlink{display:inline-block;margin-top:40px;color:var(--muted);text-decoration:none;font-size:.9rem;}
+.backlink:hover{color:var(--coral);}
+</style></head><body><div class="wrap">
+<div class="topbar"><a class="brand" href="../../index.html">TaniT</a><nav class="nav"><a href="../../index.html" class="active">Articles</a><a href="../../wiki/index.html">Wiki</a></nav></div>
+<article class="article">
+  <p class="kicker">On AI, Product &amp; the In-Between</p>
+  <h1>The Blurry Space</h1>
+  <p class="dateline">2 June 2026</p>
+  <div class="tagrow"><span class="tag">AI</span><span class="tag">LLMs</span><span class="tag">Product Management</span><span class="tag">Machine Learning</span><span class="tag">Open Source</span><span class="tag">Symbolic AI</span></div>
+
+  <figure class="hero">
+    <img src="../../assets/blurry-space-geometric.svg" alt="Five overlapping coloured circles labelled Product Managers, Designers, Data Scientists, Developers and AI Engineers, meeting in a soft central zone.">
+  </figure>
+
+  <div class="lede">
+    <p>For more than a decade I lived in the blurry space between data scientist, developer, and product manager. A delicate place to stand. You never quite belonged to any one camp, and you frequently found yourself justifying why you were straddling the lines.</p>
+    <p>But now, because of AI, that blurry space has quietly become a place where anyone can stand.</p>
+  </div>
+
+  <h2>🤨 AI Skeptic</h2>
+  <p>I started working in AI in 2013, during my PhD. Back then, it wasn’t a hot topic. There was no hype, no headlines, just math, raw data, and a massive exercise in patience.</p>
+  <p>The work was deeply based in classical statistics. We would take a dataset and attempt to model its behavior using the traditional toolkit: regressions, random forests, support vector machines, and early neural networks. It was intellectually fascinating, but we were constantly limited by training data quality, limited compute capacity, and the black box of model explainability.</p>
+  <p>So I stayed a skeptic. Firmly in the symbolic AI camp. My belief was simple: you can't brute-force your way to intelligence. Pile up a neural network, feed it the internet, and all you get is a confident mimic. A system reproducing patterns it has already seen. Never understanding. Just predicting the next token. A “stochastic parrot.”</p>
+
+  <h2>💥 When everything shifted</h2>
+  <p>Then generative AI happened. And it was hard to look away.</p>
+  <p>It started with a 2017 paper, “Attention Is All You Need,” which gave us the Transformer, the architecture behind almost every model today, including BERT and GPT. The world only noticed when ChatGPT arrived in 2022. A simple chat box, and within months the fastest-growing app ever.</p>
+  <p>The rest came fast:</p>
+  <ul class="feat">
+    <li><strong>Scale:</strong> RLHF (Reinforcement Learning from Human Feedback) taught models to align with human intent, while Mixture-of-Experts (MoE) architectures optimized compute so models only woke up the components they actually needed.</li>
+    <li><strong>Multimodality:</strong> Systems evolved to seamlessly process text, audio, images, and video inside a single context window.</li>
+    <li><strong>Agentic:</strong> We moved from basic prompting to reasoning models that explicitly “think” before answering, and agentic workflows where models independently use tools to execute multi-step tasks.</li>
+  </ul>
+  <p>Frameworks like LangChain and Anthropic's Model Context Protocol turned models into something you could actually build with.</p>
+  <p>I'm still not sure it's “intelligence” in the way I once meant the word. I think it's a different kind. But the practical implications are real, and they are radically reshaping how we create.</p>
+
+  <h2>🛠️ Building with AI: The Product Management Shift</h2>
+  <p>For a product person, these tools collapse the whole build-measure-learn loop.</p>
+  <p>Claude Code for fixing bugs and fast prototyping. Cursor for moving fast inside the codebase. Lovable to turn a one-line idea into a working app, no engineering bottleneck. Figma Make and Claude Design for high-fidelity prototypes straight from a prompt. Pipelines that pull insights from surveys, drop summaries into Slack, write them up in Notion and draft PRD in Jira.</p>
+  <p><strong>The Paradigm Shift:</strong> When the friction of building drops to near-zero, the role of the product manager changes fundamentally. You are no longer managing an execution pipeline or tracking delivery velocity; you are managing the clarity of your intent and the definition of quality.</p>
+  <p>At home, I connected Claude to my Obsidian vault to organize my notes and ideas, opening up a completely new dimension of personal learning. I feel like a kid sitting in front of a giant, infinite pile of Lego blocks. Infinite shapes, infinite possibilities and occasionally, a sense of being completely overwhelmed. Every single week brings a new model, a larger context window, a sharper agentic skill, or a new developer tool.</p>
+
+  <figure>
+    <img src="../../assets/infinite-blocks.svg" alt="A small figure with arms raised in front of colourful lego blocks fanning out into many possible shapes, with faint outline blocks suggesting endless combinations.">
+  </figure>
+
+  <p>People fear AI will destroy jobs. I think the better move is to pick up the tools and build. New work, new capacity, new opportunities.</p>
+
+  <h2>💸 The cost of all this</h2>
+  <p>Because AI is never really free, even when it's free.</p>
+  <p>The world's knowledge is being compressed into a handful of giant models, owned by a handful of companies. They carry the bias of how and what they're trained on. The internet skews Western and English-speaking, and so do they.</p>
+  <p>Then there is the massive energy bills, the staggering growth of data centers, the infrastructure strain, and the hard realities of localized heat and resource consumption. And, of course, there are the darker applications: the rapid integration of these systems into surveillance, defense, and warfare.</p>
+
+  <h2>🛤️ Open source and the other road</h2>
+  <p>This is why open source matters to me. When DeepSeek released R1 under an MIT license, it proved frontier-level reasoning didn't have to live behind one company's API. We need small base models people can train from scratch, on their own data.</p>
+  <p>And I keep one eye on the other road. Symbolic AI.</p>
+  <p>Developments in “World Models” built on architectures like JEPA represent a necessary shift, teaching models how physical reality actually works, rather than just how text flows. I think that we need deeper collaboration between AI engineers, robotics and cognitive science to get past the “parrot” effect and build models that actually reason.</p>
+  <p>So I stay optimistic. I want this to be aimed at education and healthcare. At problems worth solving.</p>
+  <p>In the meantime, I am deeply enjoying this moment in tech history. The frontier between builders, developers, and product managers has gone entirely transparent. The PM can ship a functional prototype. The engineer can spend their cycles deeply thinking about user outcomes. The non-coder can build a self-contained product.</p>
+  <p class="end">The traditional roles are blurring, and that organizational shift might actually be the real revolution. That ambiguous, blurry space I once had to justify has finally become a place where anyone can stand.</p>
+
+  <footer class="signoff">
+    <span class="name">Saif Shabou</span>
+    <span class="date">2 June 2026</span>
+    <span class="made">Made with love and the support of my friend Claude. 🤖</span>
+  </footer>
+</article>
+</div></body></html>

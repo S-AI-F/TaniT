@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TaniT — on AI, Knowledge and Learning</title><meta name="description" content="Essays and a working wiki on AI, knowledge and learning, by Saif Shabou."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wiki — TaniT</title><meta name="description" content="A plain-language wiki of AI concepts used across the TaniT articles."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{
   --paper:#f1ede4; --ink:#2b2622; --soft:#5c544b; --muted:#8a8378;
   --line:rgba(43,38,34,.10);
   --coral:#e8765a; --amber:#cf962f; --teal:#2f8a78; --slate:#4f6fa0; --plum:#7a5a9e;
@@ -108,60 +108,10 @@ ul.feat li:nth-child(3)::before{background:var(--slate);}
 .backlink{display:inline-block;margin-top:40px;color:var(--muted);text-decoration:none;font-size:.9rem;}
 .backlink:hover{color:var(--coral);}
 </style></head><body><div class="wrap">
-<header class="masthead">
-  <h1>TaniT</h1>
-  <p class="sub">on AI, Knowledge and Learning</p>
-  <nav class="nav">
-    <a href="index.html" class="active">Articles</a>
-    <a href="wiki/index.html">Wiki</a>
-  </nav>
+<div class="topbar"><a class="brand" href="../index.html">TaniT</a><nav class="nav"><a href="../index.html">Articles</a><a href="../wiki/index.html" class="active">Wiki</a></nav></div>
+<header class="pagehead">
+  <h1>Wiki</h1>
+  <p class="sub">Concepts that show up across the articles — each one a short, plain-language page.</p>
 </header>
-<main>
-  <div class="filters" id="filters"></div>
-  <ul class="feed" id="feed"></ul>
-</main>
-<script>
-const ARTICLES = [{"title": "The Blurry Space", "url": "articles/the-blurry-space/index.html", "date": "2 June 2026", "excerpt": "A decade between data science, code, and product \u2014 and how AI quietly turned that intersection into a place anyone can stand.", "tags": ["AI", "LLMs", "Product Management", "Machine Learning", "Open Source", "Symbolic AI"]}];
-const allTags = [...new Set(ARTICLES.flatMap(a => a.tags))].sort();
-let active = new Set();
-
-function renderFilters(){
-  const f = document.getElementById('filters');
-  f.innerHTML = '';
-  const all = document.createElement('button');
-  all.className = 'chip' + (active.size===0 ? ' active' : '');
-  all.textContent = 'All';
-  all.onclick = () => { active.clear(); render(); };
-  f.appendChild(all);
-  allTags.forEach(t => {
-    const b = document.createElement('button');
-    b.className = 'chip' + (active.has(t) ? ' active' : '');
-    b.textContent = t;
-    b.onclick = () => { active.has(t) ? active.delete(t) : active.add(t); render(); };
-    f.appendChild(b);
-  });
-}
-
-function renderFeed(){
-  const feed = document.getElementById('feed');
-  feed.innerHTML = '';
-  const list = ARTICLES.filter(a => active.size===0 || a.tags.some(t => active.has(t)));
-  if(list.length===0){
-    feed.innerHTML = '<li class="empty">No articles match these tags yet.</li>';
-    return;
-  }
-  list.forEach(a => {
-    const li = document.createElement('li');
-    const tags = a.tags.map(t => '<span class="tag">'+t+'</span>').join('');
-    li.innerHTML = '<a class="card" href="'+a.url+'">'
-      + '<div class="card-meta">'+a.date+'</div>'
-      + '<div class="card-title">'+a.title+'</div>'
-      + '<p class="card-excerpt">'+a.excerpt+'</p>'
-      + '<div class="card-tags">'+tags+'</div></a>';
-    feed.appendChild(li);
-  });
-}
-function render(){ renderFilters(); renderFeed(); }
-render();
-</script>
+<main><section class="wiki-group"><p class="cat">Concepts</p><ul class="wiki-list"><li><a href="context-window/index.html"><span class="term">Context Window</span><span class="gloss">The amount of text, measured in tokens, that a model can attend to at once. Everything the model “sees” for a given response…</span></a></li><li><a href="open-weights/index.html"><span class="term">Open Weights vs Open Source</span><span class="gloss">“Open weights” means a model’s trained parameters are published so anyone can run or fine-tune it. “Open source” additionally…</span></a></li><li><a href="stochastic-parrot/index.html"><span class="term">Stochastic Parrot</span><span class="gloss">A term from a 2021 paper describing a system that produces fluent language by recombining patterns from its training data,…</span></a></li><li><a href="symbolic-ai/index.html"><span class="term">Symbolic AI</span><span class="gloss">An approach to AI built on explicit rules, logic, and manipulable symbols rather than learned statistical patterns. It tends…</span></a></li><li><a href="world-models/index.html"><span class="term">World Models</span><span class="gloss">Systems that learn an internal model of how an environment works and how it changes over time, aiming to capture physical…</span></a></li></ul></section><section class="wiki-group"><p class="cat">Architectures</p><ul class="wiki-list"><li><a href="attention/index.html"><span class="term">Attention Mechanism</span><span class="gloss">A technique that lets a model weigh how much every part of the input should influence every other part, so it can focus on the…</span></a></li><li><a href="jepa/index.html"><span class="term">JEPA</span><span class="gloss">Joint Embedding Predictive Architecture: a design that learns by predicting abstract representations of missing parts of an…</span></a></li><li><a href="moe/index.html"><span class="term">Mixture-of-Experts</span><span class="gloss">An architecture containing many specialised sub-networks (“experts”) that activates only a few of them per input. This gives a…</span></a></li><li><a href="transformer/index.html"><span class="term">Transformer</span><span class="gloss">A neural-network architecture introduced in 2017 that processes an entire sequence at once using attention, rather than…</span></a></li></ul></section><section class="wiki-group"><p class="cat">Models</p><ul class="wiki-list"><li><a href="bert/index.html"><span class="term">BERT</span><span class="gloss">An encoder-style Transformer from Google (2018), trained to understand text by predicting masked words using context from both…</span></a></li><li><a href="deepseek-r1/index.html"><span class="term">DeepSeek R1</span><span class="gloss">An open-weight reasoning model released in January 2025 under a permissive MIT licence, notable for showing that…</span></a></li><li><a href="gpt/index.html"><span class="term">GPT</span><span class="gloss">A family of decoder-style Transformer models trained to predict the next token, which makes them well suited to generating…</span></a></li></ul></section><section class="wiki-group"><p class="cat">Training</p><ul class="wiki-list"><li><a href="rlhf/index.html"><span class="term">RLHF</span><span class="gloss">Reinforcement Learning from Human Feedback: a training stage where human preferences are turned into a reward signal, nudging…</span></a></li></ul></section><section class="wiki-group"><p class="cat">Capabilities</p><ul class="wiki-list"><li><a href="agentic-workflows/index.html"><span class="term">Agentic Workflows</span><span class="gloss">Patterns where a model does not just answer once but plans, calls tools, and takes multiple steps toward a goal — behaving…</span></a></li><li><a href="multimodality/index.html"><span class="term">Multimodality</span><span class="gloss">The ability of a single model to take in and reason over more than one kind of data — text, images, audio, video — within the…</span></a></li><li><a href="reasoning-models/index.html"><span class="term">Reasoning Models</span><span class="gloss">Models trained or prompted to work through intermediate steps before giving a final answer. This explicit “thinking” improves…</span></a></li></ul></section><section class="wiki-group"><p class="cat">Tooling</p><ul class="wiki-list"><li><a href="langchain/index.html"><span class="term">LangChain</span><span class="gloss">A widely used open-source framework for composing language-model calls, tools, memory, and data into larger applications and…</span></a></li><li><a href="mcp/index.html"><span class="term">Model Context Protocol (MCP)</span><span class="gloss">An open standard from Anthropic that gives models a uniform way to connect to external tools and data sources, so the same…</span></a></li></ul></section><section class="wiki-group"><p class="cat">Classical ML</p><ul class="wiki-list"><li><a href="random-forest/index.html"><span class="term">Random Forest</span><span class="gloss">A classical method that combines many decision trees, each trained on random subsets of the data, and averages them for more…</span></a></li><li><a href="svm/index.html"><span class="term">Support Vector Machine</span><span class="gloss">A classical machine-learning method that separates classes by finding the decision boundary with the widest possible margin…</span></a></li></ul></section></main>
 </div></body></html>
