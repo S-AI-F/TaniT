@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Compute Question — TaniT</title><meta name="description" content="AI is becoming a geopolitical question. It runs on chips, inside buildings, powered by electricity — and whoever controls those things controls the future."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{
+  --paper:#f1ede4; --ink:#2b2622; --soft:#5c544b; --muted:#8a8378;
+  --line:rgba(43,38,34,.10);
+  --coral:#e8765a; --amber:#cf962f; --teal:#2f8a78; --slate:#4f6fa0; --plum:#7a5a9e;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Outfit",sans-serif;font-size:18.5px;line-height:1.68;letter-spacing:.005em;font-weight:400;}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  mix-blend-mode:multiply;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");}
+.wrap{max-width:760px;margin:0 auto;padding:0 26px 110px;position:relative;z-index:2;}
+a{color:inherit;}
+
+/* top bar (inner pages) */
+.topbar{display:flex;justify-content:space-between;align-items:baseline;
+  padding:22px 0 18px;border-bottom:1px solid var(--line);margin-bottom:30px;}
+.topbar .brand{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.3rem;
+  color:var(--ink);text-decoration:none;letter-spacing:-.01em;}
+.nav a{color:var(--soft);text-decoration:none;margin-left:22px;font-size:.95rem;}
+.nav a:hover{color:var(--coral);}
+.nav a.active{color:var(--ink);border-bottom:2px solid var(--coral);padding-bottom:2px;}
+
+/* masthead (landing) */
+.masthead{padding:58px 0 8px;}
+.masthead h1{font-family:"Outfit",sans-serif;font-weight:700;
+  font-size:clamp(3.2rem,11vw,5.4rem);line-height:.95;letter-spacing:-.02em;margin:0;}
+.masthead .sub{font-style:italic;color:var(--soft);font-size:1.25rem;margin:10px 0 0;}
+.masthead .nav{margin:30px 0 0;padding-bottom:24px;border-bottom:1px solid var(--line);
+  display:flex;gap:0;}
+.masthead .nav a{margin:0 26px 0 0;font-size:1.05rem;}
+
+/* tag filter */
+.filters{display:flex;flex-wrap:wrap;gap:9px;margin:30px 0 8px;}
+.chip{font-family:"Outfit",sans-serif;font-size:.85rem;border:1px solid var(--line);
+  background:transparent;color:var(--soft);padding:6px 14px;border-radius:999px;cursor:pointer;
+  transition:all .15s ease;}
+.chip:hover{border-color:var(--ink);color:var(--ink);}
+.chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+/* article feed */
+.feed{list-style:none;padding:0;margin:8px 0 0;}
+.card{display:block;text-decoration:none;color:inherit;padding:28px 0;border-bottom:1px solid var(--line);}
+.card-meta{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);}
+.card-title{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.85rem;line-height:1.12;
+  margin:7px 0 9px;color:var(--ink);transition:color .15s ease;}
+.card:hover .card-title{color:var(--coral);}
+.card-excerpt{color:var(--soft);margin:0 0 14px;font-size:1.05rem;line-height:1.55;}
+.card-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.tag{font-size:.72rem;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 11px;}
+.empty{color:var(--muted);font-style:italic;padding:30px 0;}
+
+/* article body */
+.kicker{text-transform:uppercase;letter-spacing:.22em;font-size:12.5px;color:var(--muted);
+  margin:8px 0 16px;font-weight:500;}
+.article h1{font-family:"Outfit",sans-serif;font-weight:600;
+  font-size:clamp(2.6rem,7vw,4rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 8px;}
+.dateline{font-size:.74rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin:0 0 4px;}
+figure{margin:38px 0;}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;}
+figure.hero{margin:26px 0 6px;}
+.lede p{font-size:1.22rem;color:var(--soft);line-height:1.66;}
+.lede p:first-of-type{font-style:italic;}
+.article h2{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.65rem;line-height:1.2;
+  letter-spacing:-.01em;margin:3.2rem 0 .9rem;}
+.article p{margin:0 0 1.25rem;}
+strong{font-weight:600;}
+ul.feat{list-style:none;margin:0 0 1.4rem;padding:0;}
+ul.feat li{position:relative;padding-left:24px;margin:0 0 .85rem;}
+ul.feat li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:2px;}
+ul.feat li:nth-child(1)::before{background:var(--coral);}
+ul.feat li:nth-child(2)::before{background:var(--teal);}
+ul.feat li:nth-child(3)::before{background:var(--slate);}
+.article .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 4px;}
+.end{margin-top:2.6rem;font-style:italic;color:var(--soft);border-top:1px solid var(--line);padding-top:1.6rem;}
+.signoff{margin-top:2.6rem;padding-top:1.5rem;border-top:1px solid var(--line);
+  font-size:.95rem;color:var(--muted);line-height:1.55;}
+.signoff .name{font-family:"Outfit",sans-serif;font-weight:600;color:var(--ink);font-size:1.1rem;letter-spacing:-.01em;}
+.signoff .date{display:block;margin-top:3px;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;}
+.signoff .made{display:block;margin-top:15px;font-style:italic;}
+
+/* wiki */
+.pagehead{padding:6px 0 2px;}
+.pagehead h1{font-family:"Outfit",sans-serif;font-weight:600;font-size:clamp(2.2rem,6vw,3.2rem);
+  letter-spacing:-.015em;margin:0 0 6px;line-height:1.05;}
+.pagehead .sub{color:var(--soft);font-style:italic;margin:0 0 6px;}
+.wiki-group{margin:36px 0 0;}
+.wiki-group .cat{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);
+  margin:0 0 6px;padding-bottom:6px;border-bottom:1px solid var(--line);}
+.wiki-list{list-style:none;padding:0;margin:0;}
+.wiki-list a{display:block;text-decoration:none;color:inherit;padding:15px 0;border-bottom:1px solid var(--line);}
+.wiki-list .term{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.18rem;color:var(--ink);transition:color .15s ease;}
+.wiki-list a:hover .term{color:var(--coral);}
+.wiki-list .gloss{color:var(--soft);font-size:.97rem;line-height:1.5;margin-top:2px;}
+
+/* concept page */
+.concept .eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin:6px 0 8px;}
+.concept h1{font-family:"Outfit",sans-serif;font-weight:600;font-size:clamp(2.2rem,6vw,3.2rem);
+  letter-spacing:-.015em;margin:0 0 18px;line-height:1.05;}
+.concept .def{font-size:1.18rem;color:var(--ink);line-height:1.6;}
+.block{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);}
+.block h3{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin:0 0 12px;font-weight:600;font-family:"Outfit",sans-serif;}
+.linkchips{display:flex;flex-wrap:wrap;gap:9px;}
+.linkchips a{text-decoration:none;font-size:.9rem;color:var(--soft);border:1px solid var(--line);
+  border-radius:999px;padding:6px 13px;transition:all .15s ease;}
+.linkchips a:hover{border-color:var(--ink);color:var(--ink);}
+.backlink{display:inline-block;margin-top:40px;color:var(--muted);text-decoration:none;font-size:.9rem;}
+.backlink:hover{color:var(--coral);}
+</style></head><body><div class="wrap">
+<div class="topbar"><a class="brand" href="../../index.html">TaniT</a><nav class="nav"><a href="../../index.html" class="active">Articles</a><a href="../../wiki/index.html">Wiki</a></nav></div>
+<article class="article">
+  <p class="kicker">On AI, Energy &amp; the Geopolitics of Compute</p>
+  <h1>The Compute Question</h1>
+  <p class="dateline">4 June 2026</p>
+  <div class="tagrow"><span class="tag">AI Infrastructure</span><span class="tag">Geopolitics</span><span class="tag">Data Centers</span><span class="tag">Energy</span><span class="tag">GPUs</span></div>
+
+  <div class="lede">
+    <p>AI is not a software story. It is a physical one. It runs on chips, inside buildings, powered by electricity, connected by cables.</p>
+    <p>And whoever controls those things, controls the future.</p>
+  </div>
+
+  <h2>⚡ It starts with a building</h2>
+  <p>A data center looks boring from the outside. A large concrete box, sometimes windowless, usually on the edge of a city. No signage. Just a few ventilation units and a car park.</p>
+  <p>But inside, it is one of the most important buildings on the planet right now.</p>
+  <p>Rows of servers. Miles of cable. Industrial cooling. Enough electricity to power a small town. This is where the intelligence is being built. Not in a lab. Not in a software repository. In a building that needs its own power substation.</p>
+  <p>And the world is building them at a pace never seen before.</p>
+
+  <h2>🧠 AI made it urgent</h2>
+  <p>Data centers existed long before AI. For decades they stored files, ran email servers, hosted websites. Important, but invisible.</p>
+  <p>AI changed everything.</p>
+  <p>Training a large model is not like running a normal application. It needs thousands of GPUs working in parallel, for weeks at a time. The electricity bill for a single training run can reach tens of millions of dollars. Serving the model to users costs more.</p>
+  <p>The facilities that do this are a new kind of building. Call them <strong>AI factories</strong>. Denser, hotter, heavier on power, far more specialised than anything built before.</p>
+  <ul class="feat">
+    <li><strong>415 TWh:</strong> the electricity data centers consumed globally in 2024 — roughly 1.5% of world demand.</li>
+    <li><strong>~$300B+:</strong> projected capital spending on data center build-out in 2026.</li>
+    <li><strong>One third:</strong> the share of global data center capacity sitting in the United States.</li>
+  </ul>
+  <p>The countries that host these facilities are not just hosting technology. They are hosting economic leverage.</p>
+
+  <h2>🌍 Geography is back</h2>
+  <p>For a while, the internet made geography feel irrelevant. You could run a company from anywhere. Your data lived in the cloud.</p>
+  <p>But the cloud has a physical address.</p>
+  <p>Today, roughly a third of all data center capacity sits in the United States, clustered in Northern Virginia, Silicon Valley, and Chicago. Europe gathers around Frankfurt, London, Amsterdam, and Paris — the FLAP markets. Asia centres on Singapore, Tokyo, and Hong Kong.</p>
+  <p>This concentration is not an accident. It follows cheap power. Cold air. Stable grids. Proximity to undersea cables. And legal systems that companies trust.</p>
+  <p>The Nordics figured this out early. Iceland, Norway, Finland: cold climate, cheap renewable energy, stable politics. The data centers followed. They always follow the energy.</p>
+
+  <h2>🔌 Power is the constraint</h2>
+  <p>Land is cheap. Hardware is available if you can pay. But power is constrained.</p>
+  <p>Ireland imposed a moratorium on new data centers around Dublin. The Netherlands did the same in Amsterdam. Both were protecting their national grids from being overwhelmed. Energy policy had quietly become digital infrastructure policy.</p>
+  <p>Now those choices are deliberate. Governments decide which data centers they want and which they don’t. Where they approve a new substation, they are also deciding where the next decade of AI happens.</p>
+  <p>The tech giants know it. Microsoft, Google, and Amazon are signing deals with nuclear operators — including small modular reactors — to lock in baseload power for facilities that cannot afford to go offline. A hyperscaler signing a nuclear contract is not an energy story. It is a geopolitical one.</p>
+
+  <h2>🖥️ The chip at the center</h2>
+  <p>None of this runs without GPUs. Specifically, Nvidia’s most advanced chips. A single cluster able to train a frontier model can cost hundreds of millions of dollars. There is a waiting list.</p>
+  <p>And the US government has decided who can and cannot buy them.</p>
+  <p>Export controls on advanced chips to China, Russia, and other designated nations are among the most significant geopolitical moves of recent years. They are not ordinary trade restrictions. They are a direct attempt to limit a rival’s ability to build AI. The chip is the atom of this new race.</p>
+  <p>China is building its own alternatives, and the gap is closing if not closed. Meanwhile Saudi Arabia and the UAE are positioning themselves as intermediaries — buying chips, building vast AI campuses, offering compute to both Western and Eastern partners. <strong>Compute-neutral zones.</strong> A new kind of non-alignment.</p>
+
+  <h2>🏛️ Data as a sovereign resource</h2>
+  <p>The EU’s GDPR requires that data generated within its borders stays there. China and India have similar rules. This is not only privacy policy. It forces multinationals to build physical infrastructure locally. Data residency law is, in practice, industrial policy.</p>
+  <p>The EU goes further, building <strong>sovereign clouds</strong> — infrastructure controlled by European companies, beyond the reach of the US CLOUD Act, which lets American authorities access data held by US firms wherever the servers sit.</p>
+  <p>The question is no longer just who owns the AI. It is who controls the infrastructure it runs on. And who can reach into it.</p>
+
+  <h2>💡 What this means</h2>
+  <p>AI is the defining technology of this generation. Everyone agrees on that.</p>
+  <p>But the debate is still mostly a software debate. Models. Benchmarks. Capabilities. Safety. Regulation.</p>
+  <p>The infrastructure debate is quieter. Less visible. Yet it is where the real decisions are made. Which countries can train frontier models. Which companies control the chips. Which grids can absorb the load. These are not technical questions. They are strategic ones.</p>
+  <p>We called oil a strategic resource for a century. We built alliances around it, fought wars over it, shaped foreign policy to secure it.</p>
+  <p class="end">Compute is the new oil. And the refineries are data centers. The next time you ask a model a question, somewhere a building the size of a warehouse just drew more power than your neighbourhood did today — and a government somewhere decided whether that building could exist at all.</p>
+
+  <footer class="signoff">
+    <span class="name">Saif Shabou</span>
+    <span class="date">4 June 2026</span>
+    <span class="made">Made with love and the support of my friend Claude. 🤖</span>
+  </footer>
+</article>
+</div></body></html>

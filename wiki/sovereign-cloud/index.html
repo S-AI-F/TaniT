@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TaniT — on AI, Knowledge and Learning</title><meta name="description" content="Essays and a working wiki on AI, knowledge and learning, by Saif Shabou."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sovereign Cloud — TaniT Wiki</title><meta name="description" content="Cloud infrastructure designed to keep data and operations under a specific country or region’s legal control, beyond the reach of foreign jurisdiction"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{
   --paper:#f1ede4; --ink:#2b2622; --soft:#5c544b; --muted:#8a8378;
   --line:rgba(43,38,34,.10);
   --coral:#e8765a; --amber:#cf962f; --teal:#2f8a78; --slate:#4f6fa0; --plum:#7a5a9e;
@@ -108,60 +108,13 @@ ul.feat li:nth-child(3)::before{background:var(--slate);}
 .backlink{display:inline-block;margin-top:40px;color:var(--muted);text-decoration:none;font-size:.9rem;}
 .backlink:hover{color:var(--coral);}
 </style></head><body><div class="wrap">
-<header class="masthead">
-  <h1>TaniT</h1>
-  <p class="sub">on AI, Knowledge and Learning</p>
-  <nav class="nav">
-    <a href="index.html" class="active">Articles</a>
-    <a href="wiki/index.html">Wiki</a>
-  </nav>
-</header>
-<main>
-  <div class="filters" id="filters"></div>
-  <ul class="feed" id="feed"></ul>
-</main>
-<script>
-const ARTICLES = [{"title": "The Compute Question", "url": "articles/the-compute-question/index.html", "date": "4 June 2026", "excerpt": "AI is becoming a geopolitical question. It runs on chips, inside buildings, powered by electricity \u2014 and whoever controls those things controls the future.", "tags": ["AI Infrastructure", "Geopolitics", "Data Centers", "Energy", "GPUs"]}, {"title": "The Blurry Space", "url": "articles/the-blurry-space/index.html", "date": "2 June 2026", "excerpt": "A decade between data science, code, and product \u2014 and how AI quietly turned that intersection into a place anyone can stand.", "tags": ["AI", "LLMs", "Product Management", "Machine Learning", "Open Source", "Symbolic AI"]}];
-const allTags = [...new Set(ARTICLES.flatMap(a => a.tags))].sort();
-let active = new Set();
-
-function renderFilters(){
-  const f = document.getElementById('filters');
-  f.innerHTML = '';
-  const all = document.createElement('button');
-  all.className = 'chip' + (active.size===0 ? ' active' : '');
-  all.textContent = 'All';
-  all.onclick = () => { active.clear(); render(); };
-  f.appendChild(all);
-  allTags.forEach(t => {
-    const b = document.createElement('button');
-    b.className = 'chip' + (active.has(t) ? ' active' : '');
-    b.textContent = t;
-    b.onclick = () => { active.has(t) ? active.delete(t) : active.add(t); render(); };
-    f.appendChild(b);
-  });
-}
-
-function renderFeed(){
-  const feed = document.getElementById('feed');
-  feed.innerHTML = '';
-  const list = ARTICLES.filter(a => active.size===0 || a.tags.some(t => active.has(t)));
-  if(list.length===0){
-    feed.innerHTML = '<li class="empty">No articles match these tags yet.</li>';
-    return;
-  }
-  list.forEach(a => {
-    const li = document.createElement('li');
-    const tags = a.tags.map(t => '<span class="tag">'+t+'</span>').join('');
-    li.innerHTML = '<a class="card" href="'+a.url+'">'
-      + '<div class="card-meta">'+a.date+'</div>'
-      + '<div class="card-title">'+a.title+'</div>'
-      + '<p class="card-excerpt">'+a.excerpt+'</p>'
-      + '<div class="card-tags">'+tags+'</div></a>';
-    feed.appendChild(li);
-  });
-}
-function render(){ renderFilters(); renderFeed(); }
-render();
-</script>
+<div class="topbar"><a class="brand" href="../../index.html">TaniT</a><nav class="nav"><a href="../../index.html">Articles</a><a href="../../wiki/index.html" class="active">Wiki</a></nav></div>
+<article class="concept">
+  <p class="eyebrow">Geopolitics</p>
+  <h1>Sovereign Cloud</h1>
+  <p class="def">Cloud infrastructure designed to keep data and operations under a specific country or region’s legal control, beyond the reach of foreign jurisdiction. Europe’s Gaia-X is one effort to reduce reliance on US providers.</p>
+  <div class="block"><h3>Related concepts</h3><div class="linkchips"><a href="../../wiki/hyperscaler/index.html">Hyperscaler</a><a href="../../wiki/data-center/index.html">Data Center</a></div></div>
+  <div class="block"><h3>Appears in</h3><div class="linkchips"><a href="../../articles/the-compute-question/index.html">The Compute Question</a></div></div>
+  <a class="backlink" href="../../wiki/index.html">← Back to the Wiki</a>
+</article>
 </div></body></html>
