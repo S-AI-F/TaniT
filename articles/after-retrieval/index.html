@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>After Retrieval — TaniT</title>
+<meta name="description" content="What schools and jobs become when knowledge is inferable. A short history of where knowledge has lived, from cave paintings to large language models.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TaniT">
+<meta property="og:title" content="After Retrieval — TaniT">
+<meta property="og:description" content="What schools and jobs become when knowledge is inferable. A short history of where knowledge has lived, from cave paintings to large language models.">
+<meta property="og:image" content="/assets/og-image.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F3VYE9PRH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8F3VYE9PRH');
+</script><style>:root{
+  --paper:#f1ede4; --ink:#2b2622; --soft:#5c544b; --muted:#8a8378;
+  --line:rgba(43,38,34,.10);
+  --coral:#e8765a; --amber:#cf962f; --teal:#2f8a78; --slate:#4f6fa0; --plum:#7a5a9e;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Outfit",sans-serif;font-size:18.5px;line-height:1.68;letter-spacing:.005em;font-weight:400;}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+  mix-blend-mode:multiply;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");}
+.wrap{max-width:760px;margin:0 auto;padding:0 26px 110px;position:relative;z-index:2;}
+a{color:inherit;}
+
+/* top bar */
+.topbar{display:flex;justify-content:space-between;align-items:baseline;
+  padding:22px 0 18px;border-bottom:1px solid var(--line);margin-bottom:30px;}
+.topbar .brand{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.3rem;
+  color:var(--ink);text-decoration:none;letter-spacing:-.01em;display:flex;align-items:center;gap:9px;}
+.brand-logo{height:24px;width:auto;display:block;flex-shrink:0;}
+.nav a{color:var(--soft);text-decoration:none;margin-left:22px;font-size:.95rem;}
+.nav a:hover{color:var(--coral);}
+.nav a.active{color:var(--ink);border-bottom:2px solid var(--coral);padding-bottom:2px;}
+
+/* article body */
+.kicker{text-transform:uppercase;letter-spacing:.22em;font-size:12.5px;color:var(--muted);
+  margin:8px 0 16px;font-weight:500;}
+.article h1{font-family:"Outfit",sans-serif;font-weight:600;
+  font-size:clamp(2.6rem,7vw,4rem);line-height:1.02;letter-spacing:-.015em;margin:0 0 8px;}
+.article .sub{font-family:"Outfit",sans-serif;font-style:italic;color:var(--soft);
+  font-size:1.35rem;line-height:1.4;letter-spacing:-.005em;margin:6px 0 14px;}
+.dateline{font-size:.74rem;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin:0 0 4px;}
+.lede p{font-size:1.22rem;color:var(--soft);line-height:1.66;}
+.lede p:first-of-type{font-style:italic;}
+.article h2{font-family:"Outfit",sans-serif;font-weight:600;font-size:1.65rem;line-height:1.2;
+  letter-spacing:-.01em;margin:3.2rem 0 .9rem;}
+.article p{margin:0 0 1.25rem;}
+strong{font-weight:600;}
+ul.feat{list-style:none;margin:0 0 1.4rem;padding:0;}
+ul.feat li{position:relative;padding-left:24px;margin:0 0 .85rem;}
+ul.feat li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:2px;}
+ul.feat li:nth-child(1)::before{background:var(--coral);}
+ul.feat li:nth-child(2)::before{background:var(--teal);}
+ul.feat li:nth-child(3)::before{background:var(--slate);}
+.article .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0 4px;}
+.tag{font-size:.72rem;color:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 11px;}
+.end{margin-top:2.6rem;font-style:italic;color:var(--soft);border-top:1px solid var(--line);padding-top:1.6rem;}
+.signoff{margin-top:2.6rem;padding-top:1.5rem;border-top:1px solid var(--line);
+  font-size:.95rem;color:var(--muted);line-height:1.55;}
+.signoff .name{font-family:"Outfit",sans-serif;font-weight:600;color:var(--ink);font-size:1.1rem;letter-spacing:-.01em;}
+.signoff .date{display:block;margin-top:3px;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;}
+.signoff .made{display:block;margin-top:15px;font-style:italic;}
+
+/* timeline */
+.timeline{margin:28px 0 32px;padding:0;}
+.tl-row{display:flex;align-items:flex-start;}
+.tl-year{flex:0 0 90px;text-align:right;padding:9px 14px 0 0;font-size:11px;color:var(--muted);line-height:1.4;font-variant-numeric:tabular-nums;letter-spacing:.01em;}
+.tl-axis{flex:0 0 42px;position:relative;align-self:stretch;display:flex;justify-content:center;padding-top:8px;}
+.tl-line{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--line);transform:translateX(-50%);}
+.tl-row:first-child .tl-line{top:22px;}
+.tl-row:last-child .tl-line{bottom:calc(100% - 22px);}
+.tl-dot{position:relative;width:28px;height:28px;border-radius:50%;background:var(--paper);border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink);flex-shrink:0;transition:transform .18s ease;}
+.tl-row:hover .tl-dot{transform:scale(1.08);}
+.tl-row:last-child .tl-dot{background:var(--ink);color:var(--paper);}
+.tl-content{flex:1;padding:8px 0 16px 14px;min-width:0;}
+.tl-row:last-child .tl-content{padding-bottom:4px;}
+.tl-title{font-size:14px;font-weight:500;color:var(--ink);margin:0 0 2px;line-height:1.35;font-family:"Outfit",sans-serif;}
+.tl-desc{font-size:12px;color:var(--soft);line-height:1.5;margin:0;font-family:"Outfit",sans-serif;}
+@media (max-width:600px){
+  .tl-year{flex:0 0 72px;font-size:10px;padding-right:8px;}
+  .tl-axis{flex:0 0 36px;}
+  .tl-dot{width:26px;height:26px;font-size:12px;}
+  .tl-content{padding-left:12px;padding-bottom:14px;}
+  .tl-title{font-size:13px;}
+  .tl-desc{font-size:11px;}
+}
+</style></head><body><div class="wrap">
+
+<div class="topbar"><a class="brand" href="../../index.html"><img src="../../assets/tanit-logo.svg" alt="" class="brand-logo">TaniT</a><nav class="nav"><a href="../../index.html" class="active">Articles</a><a href="../../wiki/index.html">Wiki</a><a href="../../about.html">About</a></nav></div>
+
+<article class="article">
+  <p class="kicker">On AI, Knowledge &amp; Learning</p>
+  <h1>After Retrieval</h1>
+  <p class="sub">What schools and jobs become when knowledge is inferable</p>
+  <p class="dateline">7 June 2026</p>
+  <div class="tagrow"><span class="tag">AI</span><span class="tag">LLMs</span><span class="tag">Knowledge</span><span class="tag">Education</span><span class="tag">Epistemology</span><span class="tag">Philosophy</span></div>
+
+  <div class="lede">
+    <p>Every revolution in human history has been a revolution in knowledge. Not in what we know — but in how we store it, transmit it, and decide who gets to access it.</p>
+    <p>The arrival of generative AI is not a software story. It is the next chapter in a 40,000-year-old project: the externalization of human memory. To see why this matters — and where it might lead — we need to look backwards.</p>
+  </div>
+
+  <h2>🧠 What is knowledge, actually?</h2>
+  <p>Before we trace the history, we need a working definition. Plato gave us the most enduring answer in <em>Theaetetus</em>: knowledge is <strong>justified true belief</strong>. To know something, you need to believe it, it needs to be true, and you need a reason for believing it. Aristotle then split knowledge into three modes that still structure how we think about expertise:</p>
+
+  <ul class="feat">
+    <li><strong>Episteme</strong> — universal, theoretical knowledge (what we'd call science)</li>
+    <li><strong>Techne</strong> — practical, craft knowledge (what we'd call engineering)</li>
+    <li><strong>Phronesis</strong> — practical wisdom (what we'd call judgment)</li>
+  </ul>
+
+  <p>In the 20th century, the chemist-philosopher Michael Polanyi added another distinction: <strong>tacit vs. explicit knowledge</strong>. Some knowledge can be written down (facts, procedures, definitions). Some lives only in bodies and habits (the surgeon's hand, the chef's instinct, the trader's gut). <em>“We can know more than we can tell,”</em> Polanyi wrote. This matters now more than ever, because AI is unusually good at codifying the explicit and unusually weak at the tacit.</p>
+
+  <p>Knowledge management theorists later gave us the <strong>DIKW pyramid</strong>: Data → Information → Knowledge → Wisdom. Data is raw signal. Information is data with context. Knowledge is information that has been internalized and connected. Wisdom is knowledge applied with judgment.</p>
+
+  <p>Hold these distinctions. The history of knowledge revolutions is largely a history of compressing and distributing the lower layers.</p>
+
+  <h2>🗿 The substrate problem</h2>
+  <p>Every form of knowledge has been bottlenecked by its medium.</p>
+  <p>Oral knowledge dies with the speaker. Written knowledge is fragile to fire. Printed knowledge is expensive to copy until you have a press. Digital knowledge is cheap to copy but expensive to verify. Modeled knowledge, what a large language model contains, is cheap to query but opaque to interrogate.</p>
+  <p>Every revolution that follows is a story about substrate. About finding a new way to store more, share more, or compute more on what humanity already knows.</p>
+
+  <h2>📜 The long arc</h2>
+  <p>Eighteen moments. Each one a new way to store, transmit, or compute what we know. Read top to bottom — the further you descend, the closer we get to now.</p>
+
+  <div class="timeline" role="list" aria-label="Timeline of knowledge revolutions, from cave paintings to large language models">
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">~40,000 BCE</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-hand-stop" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Cave paintings &amp; symbolic markers</p>
+        <p class="tl-desc">First external memories outside the human body.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">to 3000 BCE</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-message-circle" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Oral traditions</p>
+        <p class="tl-desc">Knowledge synchronous, embodied, fading with each keeper.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">~3400 BCE</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-writing" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Invention of writing</p>
+        <p class="tl-desc">Cuneiform and hieroglyphs. Knowledge becomes durable.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">~1800 BCE</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-math-symbols" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Mathematical notation</p>
+        <p class="tl-desc">Abstract symbols that compress reasoning itself.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">~1050 BCE</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-letter-a" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Phoenician alphabet</p>
+        <p class="tl-desc">22 signs. Literacy becomes learnable in a day.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">c. 300 BCE</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-building-bank" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">The great libraries</p>
+        <p class="tl-desc">Alexandria, Nalanda, Baghdad. Knowledge aggregated and translated.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">c. 100 BCE</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-book-2" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Paper &amp; codex</p>
+        <p class="tl-desc">The first searchable medium. Page replaces scroll.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">1440</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-printer" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">The printing press</p>
+        <p class="tl-desc">Reproducing text becomes cheap. Ideas outrun their censors.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">1665</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-article" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Scientific journals</p>
+        <p class="tl-desc">Peer-reviewed, dated, citation-traceable knowledge.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">17th–18th c.</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-news" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Newspapers &amp; postal networks</p>
+        <p class="tl-desc">Information becomes time-stamped and routine.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">1830s–1920s</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-broadcast" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">The telegraph, telephone &amp; radio</p>
+        <p class="tl-desc">Signal detaches from physical transport. Voice returns at broadcast scale.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">1890s</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-movie" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Cinema &amp; television</p>
+        <p class="tl-desc">Industrial moving images at mass scale.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">1940s</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-device-desktop" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Computers</p>
+        <p class="tl-desc">Knowledge stored as voltage states. The substrate goes electronic.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">1989</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-world" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">The World Wide Web</p>
+        <p class="tl-desc">Documents link to documents. The library is everywhere.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">1998–2001</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-search" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Search engines &amp; Wikipedia</p>
+        <p class="tl-desc">Algorithmic ranking. The encyclopedia, distributed.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">2004→</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-share" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Social media &amp; YouTube, podcasts, streaming</p>
+        <p class="tl-desc">Knowledge becomes social, viral, and on-demand.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">~2006</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-cloud" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Cloud &amp; big data</p>
+        <p class="tl-desc">Storage and computation become utilities.</p>
+      </div>
+    </div>
+
+    <div class="tl-row" role="listitem">
+      <div class="tl-year">2017→</div>
+      <div class="tl-axis"><div class="tl-line"></div><div class="tl-dot"><i class="ti ti-brain" aria-hidden="true"></i></div></div>
+      <div class="tl-content">
+        <p class="tl-title">Large language models &amp; generative AI</p>
+        <p class="tl-desc">Knowledge becomes inferable, not just readable.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p>This is where we are.</p>
+
+  <h2>🤖 The compression revolution</h2>
+  <p>What a large language model actually does, behind the chat interface, is striking. It takes a substantial fraction of recorded human text (books, articles, code, conversations…) and compresses it into a set of weights. The weights don't store the text. They store the <em>statistical structure of how the text relates</em>.</p>
+
+  <p>Every prior knowledge revolution was about storage and transmission. Cuneiform stored more than memory could. Print transmitted more than scriptoria could. The web transmitted more than print could. An LLM is the first technology in the sequence that doesn't just store or transmit, it <strong>infers</strong>. It produces new knowledge artifacts on demand.</p>
+
+  <p>The data center, then, becomes the new library. Not because it stores books, books have been stored fine on disk for decades, but because it's the physical site where the inference happens.</p>
+
+  <h2>🏛️ Education: the framework always lags</h2>
+  <p>Every knowledge revolution has produced a corresponding revolution in how we teach. The lag is usually one or two generations.</p>
+
+  <p>The Academy emerged after the alphabet made it possible to discuss texts collectively rather than memorize them individually. The medieval university emerged once manuscript culture stabilized and could support institutional libraries. The research university emerged once scientific journals had created a working scientific community. Mass schooling emerged, alongside cheap print and the industrial demand for literate, numerate workers. MOOCs and online learning emerged after the web, and have struggled, partly because they replicated the lecture format in a medium that was begging for something new.</p>
+
+  <p>So what does education look like when the substrate is generative inference?</p>
+
+  <p>Here is the unavoidable tension: most of formal education today is about transmitting and testing the explicit layer of knowledge: facts, procedures, definitions, derivations. This is precisely the layer the LLM has just commoditized. A high schooler with a frontier model has, in raw retrievable knowledge, the resources of a small university library and a patient tutor.</p>
+
+  <p>This does not make education obsolete. It makes the current shape of education obsolete. The parts that survive are the parts the model cannot do: tacit knowledge (the lab, the studio, the clinic), embodied practice (sports, performance, fieldwork), and <em>phronesis</em> (judgment under uncertainty, taste, ethics, the ability to know which question is worth asking).</p>
+
+  <p>There is a 2,400-year-old text that speaks directly to our moment. In Plato's <em>Phaedrus</em>, Socrates tells the myth of Theuth, the Egyptian god who invented writing and proudly presented it to the king. The king refused the gift. <em>Writing will not strengthen memory, he warned, it will weaken it. Your students will appear to know much, but they will know nothing, they will be filled with the conceit of wisdom rather than wisdom itself.</em></p>
+
+  <p>Every knowledge technology since has provoked the same complaint. Print made us shallow. Calculators ruined arithmetic. Google made us forget how to find. The position on LLMs in education is this: yes, something will be lost. Some part of mental discipline, some part of the productive struggle of looking things up, some part of the muscle memory of writing your own first draft. And yes, something will be gained. The infinitely available tutor for everyone and nearly free.</p>
+
+  <p>The question for educators is not whether to admit this technology, but what to teach when retrieval is solved.</p>
+
+  <h2>💼 Work: the knowledge worker, reconsidered</h2>
+  <p>The same logic applies to work. Every knowledge revolution has destroyed and created categories of labor.</p>
+
+  <p>Roles whose value was <em>retrieval and synthesis of explicit knowledge</em> are being repriced in real time. It is a re-stratification of knowledge work along the tacit/explicit line. People who can move into the tacit, judgmental, embodied parts of their craft will thrive. People who were paid for the explicit, retrievable parts will compete with a machine that does it for free.</p>
+
+  <p>The implication for education is exactly the inverse of where most school systems currently sit. We grade what is easiest to grade, and what is easiest to grade is exactly what the model already does.</p>
+
+  <h2>📍 Where this leaves us</h2>
+  <p>The history of knowledge is a history of substrates. Bone, clay, papyrus, parchment, paper, film, magnetic tape, silicon, weights in a transformer. Each substrate has been faster, cheaper, denser, and more abstract than the last. And each substrate has produced a corresponding wave of institutions — libraries, universities, publishing houses, newsrooms, search engines, social networks.</p>
+
+  <p>Generative AI is the next substrate. The institutions for it have not been built yet. The educational forms for it have not been designed. The legal frameworks are partial. The job markets are still adjusting.</p>
+
+  <p>That is the moment we are living in. Not the end of knowledge — its largest reorganization since the printing press, and possibly since the alphabet.</p>
+
+  <p>If the Phoenicians made literacy <em>learnable</em>, and Gutenberg made it <em>reproducible</em>, and Berners-Lee made it <em>linkable</em>, the current shift makes it <em>inferable</em>. Knowledge that you can ask, not just read.</p>
+
+  <p>The new library is a data center. The new librarian is a model. The new reader is everyone, and the new writer is, increasingly, also everyone — assisted, augmented, or, depending on your view, displaced.</p>
+
+  <p>The question worth holding onto is the one Socrates asked the Egyptian king: will we know more, or only seem to?</p>
+
+  <p class="end">The answer is not pre-decided. It depends on what we build around the technology — what schools, what professions, what laws, what habits. The substrate is here. The institutions are ours to design.</p>
+
+  <footer class="signoff">
+    <span class="name">Saif Shabou</span>
+    <span class="date">7 June 2026</span>
+    <span class="made">Made with love and the support of my friend Claude. 🤖</span>
+  </footer>
+</article>
+</div></body></html>
