@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beyond the Automation Panic — TaniT</title>
+<meta name="description" content="Single-number forecasts of AI job loss say almost nothing about any specific country. A two-axis method, exposure against Transition Capacity, does better." />
+
+<!-- Open Graph / Twitter (verify asset path matches your /assets folder) -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Beyond the Automation Panic" />
+<meta property="og:description" content="A two-axis method for mapping AI's real impact on global labor markets: exposure against Transition Capacity." />
+<meta property="og:url" content="https://s-ai-f.github.io/TaniT/articles/beyond-the-automation-panic/" />
+<meta property="og:image" content="https://s-ai-f.github.io/TaniT/assets/og-image.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Beyond the Automation Panic" />
+<meta name="twitter:description" content="A two-axis method for mapping AI's real impact on global labor markets." />
+<meta name="twitter:image" content="https://s-ai-f.github.io/TaniT/assets/og-image.svg" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F3VYE9PRH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8F3VYE9PRH');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #F5F0E8;
+    --ink: #1E2535;
+    --terra: #B0532E;
+    --teal: #2D8A7E;
+    --slate: #8A8580;
+    --slate-light: #D6D3CE;
+    --white: #FFFFFF;
+    --measure: 720px;
+    --container: 900px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Site bar ---------- */
+  .site-bar {
+    border-bottom: 1px solid var(--slate-light);
+  }
+  .site-bar .container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .brand svg { display: block; height: 36px; width: auto; }
+  .brand .wordmark {
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .site-bar .tag {
+    margin-left: auto;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  /* ---------- Article header ---------- */
+  article { padding-bottom: 96px; }
+
+  .article-head {
+    padding-top: 72px;
+    padding-bottom: 8px;
+  }
+  .article-head .measure { max-width: var(--measure); margin: 0 auto; }
+
+  .eyebrow {
+    color: var(--terra);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 24px;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: clamp(34px, 5.5vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 0 0 24px;
+  }
+
+  .dek {
+    font-weight: 300;
+    font-size: clamp(20px, 2.6vw, 24px);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 32px;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 15px;
+    color: var(--slate);
+    border-top: 1px solid var(--slate-light);
+    padding-top: 24px;
+  }
+  .meta .author { color: var(--ink); font-weight: 600; }
+  .meta .dot { color: var(--slate-light); }
+
+  /* ---------- Prose ---------- */
+  .prose { max-width: var(--measure); margin: 0 auto; }
+
+  .prose p { margin: 0 0 24px; }
+
+  .prose h2 {
+    font-weight: 600;
+    font-size: clamp(26px, 3.4vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 64px 0 24px;
+    padding-top: 8px;
+  }
+  .prose h2 .num {
+    color: var(--terra);
+    font-weight: 600;
+    margin-right: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .prose h3 {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.3;
+    margin: 40px 0 12px;
+  }
+
+  .prose strong { font-weight: 600; }
+
+  .prose a {
+    color: var(--terra);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  /* ---------- In brief ---------- */
+  .inbrief {
+    max-width: var(--measure);
+    margin: 40px auto 8px;
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-left: 3px solid var(--terra);
+    border-radius: 2px;
+    padding: 24px 28px;
+  }
+  .inbrief h4 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terra);
+  }
+  .inbrief ul { margin: 0; padding: 0; list-style: none; }
+  .inbrief li {
+    position: relative;
+    padding-left: 22px;
+    margin: 0 0 10px;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .inbrief li:last-child { margin-bottom: 0; }
+  .inbrief li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 7px; height: 7px;
+    background: var(--teal);
+    border-radius: 50%;
+  }
+
+  /* ---------- Formula ---------- */
+  .formula-block {
+    max-width: var(--measure);
+    margin: 0 auto 24px;
+  }
+  .formula-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin: 0 0 10px;
+  }
+  .formula {
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-radius: 2px;
+    padding: 22px 24px;
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .formula .v { color: var(--terra); font-weight: 600; }
+  .formula sub { font-size: 0.66em; }
+  .radic { white-space: nowrap; }
+  .radic .vinc {
+    border-top: 2px solid var(--ink);
+    padding: 0 4px 0 2px;
+    margin-left: -2px;
+  }
+
+  /* ---------- Pull quote ---------- */
+  .pull {
+    max-width: var(--measure);
+    margin: 48px auto;
+    font-weight: 300;
+    font-size: clamp(23px, 3.2vw, 30px);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    padding-left: 24px;
+    border-left: 3px solid var(--teal);
+  }
+
+  /* ---------- Archetype grid ---------- */
+  .arch-grid {
+    max-width: var(--measure);
+    margin: 8px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .arch {
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-top: 3px solid var(--terra);
+    border-radius: 2px;
+    padding: 22px 22px 24px;
+  }
+  .arch--frontier  { border-top-color: var(--teal); }
+  .arch--leapfrog  { border-top-color: var(--teal); }
+  .arch--vulnerable{ border-top-color: var(--terra); }
+  .arch--behind    { border-top-color: var(--slate); }
+
+  /* Spatial axis hints around the 2x2 map */
+  .arch-axisnote {
+    max-width: var(--measure);
+    margin: 24px auto 8px;
+    font-size: 14px;
+    color: var(--slate);
+    letter-spacing: 0.01em;
+  }
+  .arch-axisnote strong { color: var(--ink); font-weight: 600; }
+  .arch h3 { margin: 0 0 4px; font-size: 19px; }
+  .arch .axes {
+    font-size: 13px;
+    color: var(--slate);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin: 0 0 12px;
+  }
+  .arch p { font-size: 16px; line-height: 1.55; margin: 0; }
+
+  /* ---------- Widget figure ---------- */
+  figure.widget {
+    margin: 48px auto 16px;
+    max-width: var(--container);
+  }
+  .widget-frame {
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-radius: 3px;
+    padding: 8px;
+    box-shadow: 0 1px 2px rgba(30,37,53,0.04);
+  }
+  .widget-frame iframe {
+    display: block;
+    width: 100%;
+    height: 520px;
+    border: 0;
+  }
+  figure.widget figcaption {
+    max-width: var(--measure);
+    margin: 18px auto 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--slate);
+  }
+  figure.widget figcaption .fignum { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Footer ---------- */
+  .site-foot {
+    border-top: 1px solid var(--slate-light);
+    padding: 40px 0 64px;
+  }
+  .site-foot .container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: var(--slate);
+    font-size: 14px;
+  }
+  .site-foot .brand .wordmark { font-size: 16px; }
+  .site-foot svg { height: 26px; }
+  .site-foot .right { margin-left: auto; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    body { font-size: 18px; }
+    .article-head { padding-top: 48px; }
+    .arch-grid { grid-template-columns: 1fr; }
+    .formula { font-size: 19px; padding: 18px 16px; }
+    .widget-frame iframe { height: 460px; }
+    .prose h2 .num { display: block; margin: 0 0 4px; font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Tanit mark, reused via <use> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="tanit-mark">
+        <circle cx="60" cy="26" r="16" fill="none" stroke="currentColor"
+                stroke-width="4.5" />
+        <line x1="16" y1="52" x2="104" y2="52" stroke="currentColor"
+              stroke-width="4.5" stroke-linecap="square" />
+        <path d="M60 60 L31 132 Q60 112 89 132 Z" fill="none" stroke="currentColor"
+              stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square" />
+      </g>
+    </defs>
+  </svg>
+
+  <header class="site-bar">
+    <div class="container">
+      <a class="brand" href="../../" aria-label="TaniT home">
+        <svg viewBox="0 0 120 160" role="img" aria-label="TaniT"><use href="#tanit-mark"/></svg>
+        <span class="wordmark">TaniT</span>
+      </a>
+      <span class="tag">Analysis</span>
+    </div>
+  </header>
+
+  <article>
+    <div class="container">
+
+      <div class="article-head">
+        <div class="measure">
+          <p class="eyebrow">AI &amp; Labor Markets</p>
+          <h1>Beyond the Automation Panic</h1>
+          <p class="dek">Single-number forecasts of AI job loss tell you almost nothing about any specific country. A two-axis method — exposure measured against Transition Capacity — does better.</p>
+          <div class="meta">
+            <span class="author">Saif Shabou</span>
+            <span class="dot">·</span>
+            <span>June 2026</span>
+            <span class="dot">·</span>
+            <span>11 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="inbrief">
+        <h4>In brief</h4>
+        <ul>
+          <li>Single-axis AI exposure rankings collapse very different national situations into one misleading number.</li>
+          <li>Pairing exposure with preparedness yields two composite measures: <strong>Transition Capacity</strong> and an <strong>Opportunity Score</strong>.</li>
+          <li>Economies sort into four archetypes. The policy response that fits one is wrong for the others.</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+
+        <h2><span class="num">01</span>Why single-axis predictions fail</h2>
+
+        <p>Most AI labor market analyses share the same flaw. They flatten a complex problem into a single number. X percent of jobs are at risk. Y million workers face displacement. The headline travels. The analysis does not.</p>
+
+        <p>A prediction that describes the United States says something different about India. Something different still about Nigeria. The technology is uniform. The economies it hits are not. Treating AI exposure as a wave that strikes every country with equal force tells you almost nothing useful about what will actually happen anywhere specific.</p>
+
+        <p>This matters beyond academic precision. Governments designing AI strategy around aggregate displacement figures will misallocate. The countries most in need of protective policy are not necessarily the ones scoring highest on exposure rankings. The framework is missing a dimension.</p>
+
+        <p>A more useful analysis has two axes.</p>
+
+        <h2><span class="num">02</span>What the existing research tells us</h2>
+
+        <p>Three bodies of work are directly relevant.</p>
+
+        <p>The exposure indices developed by Felten, Raj, and Seamans map frontier large language model capabilities to specific occupational task descriptions. The core finding is counterintuitive: advanced knowledge economies face significantly higher cognitive exposure than industrial or agrarian ones. White-collar work is more exposed than manual work. High-income countries are more exposed than low-income ones. The sophistication of an economy and its near-term vulnerability to cognitive automation move together.</p>
+
+        <p>The IMF AI Preparedness Index asks the second half of the question. Not which economies are exposed, but which are structurally ready to respond. It scores national digital infrastructure, human capital policy, innovation ecosystems, and governance frameworks. Exposure without this dimension is an incomplete picture.</p>
+
+        <p>The Anthropic AI Economic Index tracks how frontier model capabilities are advancing against standardized economic tasks. Its most significant implication: the timeline for cognitive automation is compressing faster than historical technology adoption cycles. The window for structural adjustment is shorter than most national AI strategies assume.</p>
+
+        <p>Each of these frameworks contributes something. None combines all three signals. What follows proposes a method for doing that.</p>
+
+        <h2><span class="num">03</span>The method</h2>
+
+        <p>The framework produces two composite indicators, both built from normalized exposure and preparedness scores drawn from ILO and World Bank employment data and ITU/WEF digital ecosystem indicators.</p>
+
+      </div>
+
+      <div class="formula-block">
+        <p class="formula-label">AI Transition Capacity (TC)</p>
+        <div class="formula">
+          <span class="v">TC<sub>i</sub></span> = 1 − [ E<sub>i</sub> × (1 − P<sub>i</sub>) ]
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Transition Capacity measures a country's structural ability to integrate advanced cognitive technologies without generating catastrophic unemployment. The formula has a specific property: high exposure is not automatically a liability. It becomes one only when paired with low preparedness. A highly exposed economy with strong institutional foundations converts disruption into productivity. Without those foundations, it cannot.</p>
+      </div>
+
+      <div class="formula-block">
+        <p class="formula-label">AI Opportunity Score (O)</p>
+        <div class="formula">
+          <span class="v">O<sub>i</sub></span> = <span class="radic">√<span class="vinc">P<sub>i</sub> × E<sub>i</sub></span></span>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>The Opportunity Score captures the interaction between exposure and preparedness using a geometric rather than linear model. Both inputs are required to produce a meaningful score. Preparedness without exposure yields low opportunity because the economy has little cognitive surface area for AI to augment. Exposure without preparedness yields low opportunity because there is no structural capacity to capture the gain. The two conditions are necessary together.</p>
+
+        <p>This is why a linear average would mislead. A country with world-class digital infrastructure but a largely manual workforce and a country with heavy white-collar exposure but no digital backbone would score identically in a simple average. They face fundamentally different situations.</p>
+
+        <h2><span class="num">04</span>Four archetypes</h2>
+
+        <p>When Transition Capacity and Opportunity Score are plotted against the two underlying axes — preparedness and exposure — economies cluster into four structural archetypes.</p>
+      </div>
+
+      <p class="arch-axisnote">The four cards below are arranged as the matrix reads: <strong>left to right is rising preparedness</strong>; <strong>top to bottom is falling exposure</strong>.</p>
+
+      <div class="arch-grid">
+        <div class="arch arch--vulnerable">
+          <h3>The Vulnerable Zone</h3>
+          <p class="axes">High exposure · Low preparedness</p>
+          <p>Economies built on offshore BPO, basic software services, and template cognitive exports. They face direct automation pressure on their core industries but lack the safety nets or capital to reallocate displaced knowledge workers. The most structurally dangerous position.</p>
+        </div>
+        <div class="arch arch--frontier">
+          <h3>The Advanced Frontier</h3>
+          <p class="axes">High exposure · High preparedness</p>
+          <p>Knowledge-dense, service-heavy economies with mature digital infrastructure and flexible labor markets. The disruption is real and near-term, but the capacity to absorb it is highest. The probable outcome is substantial labor reallocation and compounding productivity growth, not mass unemployment.</p>
+        </div>
+        <div class="arch arch--behind">
+          <h3>The Left Behind</h3>
+          <p class="axes">Low exposure · Low preparedness</p>
+          <p>Primary commodity, agrarian, or informal-service economies, largely insulated from immediate automation. That insulation is not a strategic asset. As frontier economies capture non-linear gains, the relative position of the Left Behind deteriorates. The threat is divergence, not disruption.</p>
+        </div>
+        <div class="arch arch--leapfrog">
+          <h3>The Potential Leapfrog</h3>
+          <p class="axes">Low exposure · High preparedness</p>
+          <p>Highly digitized economies whose current industrial mix limits immediate white-collar impact. Not facing imminent displacement, they hold the fiscal and institutional headroom to move early — infrastructure, AI service exports, regional hub positioning. The window is finite.</p>
+        </div>
+      </div>
+
+      <figure class="widget">
+        <div class="widget-frame">
+          <iframe src="ai-transition-matrix.html"
+                  title="Interactive matrix plotting national economies by AI exposure and preparedness, colored by Opportunity Score"
+                  loading="lazy" scrolling="no"></iframe>
+        </div>
+        <figcaption><span class="fignum">Figure 1.</span> Each point is a national economy, positioned by AI preparedness (horizontal) and AI exposure (vertical), and colored by Opportunity Score. The four quadrants correspond to the archetypes above. Hover any point to read its exposure, preparedness, Transition Capacity, and Opportunity Score.</figcaption>
+      </figure>
+
+      <div class="prose">
+
+        <h2><span class="num">05</span>Geographic distribution</h2>
+
+        <p>The framework scores 124 economies. Before looking at any individual region, one structural fact dominates the map: exposure and preparedness are highly correlated across countries, at 0.87. Economies that have built the digital and institutional capacity to use AI are also the ones whose workforces are most exposed to it. The two move together.</p>
+
+        <p>This is why most countries sit on the diagonal. Of the 124, 47 fall in the Advanced Frontier and 58 in the Left Behind. Only 19 occupy the two off-diagonal archetypes, 13 Vulnerable and 6 Leapfrog. The interesting cases are rare. The dominant global pattern is a single development gradient: high exposure with high preparedness at one end, low with low at the other.</p>
+
+      </div>
+
+      <figure class="widget">
+        <div class="widget-frame">
+          <iframe src="ai-transition-map.html"
+                  title="World choropleth map of AI Transition Capacity and archetype by country"
+                  loading="lazy"></iframe>
+        </div>
+        <figcaption><span class="fignum">Figure 2.</span> Global distribution of the four archetypes. Each country is shaded by its assigned archetype; hover for its exposure, preparedness, Transition Capacity, and Opportunity Score.</figcaption>
+      </figure>
+
+      <div class="prose">
+
+        <p><strong>Western Europe and North America are uniformly Advanced Frontier.</strong> All 18 Western European economies in the sample and the United States fall in this quadrant, and they hold almost every top Opportunity Score: Singapore, Luxembourg, the Netherlands, Switzerland, the Nordics, Germany, the United States, the United Kingdom. These are the economies that absorb the most near-term disruption and capture the most medium-term dividend. They will also generate most of the policy pressure around labor transition and governance.</p>
+
+        <p><strong>Eastern Europe and the Balkans have largely joined them.</strong> Fourteen of the nineteen economies in this region score as Advanced Frontier, including the Baltics, Poland, Czechia, Romania, Bulgaria, Serbia, Croatia, Turkey, and Russia. This is the least intuitive regional finding. On these measures, the preparedness gap between Western and Eastern Europe has largely closed. Only a few sit off-diagonal: Albania and Georgia as Leapfrogs, Belarus, Bosnia, and North Macedonia as Vulnerable.</p>
+
+        <p><strong>Sub-Saharan Africa is the clearest Left Behind cluster.</strong> Thirty-two of the thirty-five economies in the region fall in this quadrant. The only exceptions are the small island states Mauritius and Seychelles, which reach the Advanced Frontier, and Gabon, which sits in the Vulnerable Zone. The lowest Opportunity Scores worldwide are concentrated here: Burundi, Mozambique, Ethiopia, Madagascar, the Democratic Republic of Congo.</p>
+
+        <p><strong>South Asia is entirely Left Behind.</strong> India, Pakistan, Bangladesh, Nepal, and Sri Lanka all sit in the low-exposure, low-preparedness quadrant. This is the result most likely to surprise readers expecting India to anchor a Vulnerable Zone built on its IT and outsourcing sector. At the level of the whole economy, it does not. More on why below.</p>
+
+        <p><strong>East and Southeast Asia are split three ways.</strong> The advanced economies (Japan, Singapore, Australia, Brunei) are Frontier. A distinct Leapfrog cluster of Indonesia, the Philippines, and Thailand shows low aggregate exposure paired with preparedness that has crossed the threshold. The lower-income mainland and Pacific economies (Vietnam, Cambodia, Laos, Myanmar, Papua New Guinea, Timor-Leste) are Left Behind.</p>
+
+        <p><strong>Latin America is the most internally divided region on the map.</strong> It is the only region present in all four archetypes. Brazil, Mexico, Chile, Uruguay, and Costa Rica reach the Advanced Frontier. A Vulnerable cluster runs through the Caribbean and Southern Cone: Argentina, Colombia, the Dominican Republic, Jamaica, the Bahamas, Suriname. Panama stands alone as a Leapfrog. The Central American and Andean economies (Bolivia, Ecuador, Peru, Guatemala, Honduras, El Salvador) are Left Behind. No single regional story applies.</p>
+
+        <p>Two cautions follow from the data, and both matter for how the map is used.</p>
+
+        <p><strong>National exposure is not sector exposure.</strong> The reason India scores as low-exposure is that the framework measures exposure across the entire workforce, and that workforce is still dominated by agriculture and informal labor. A large, highly exposed IT and BPO export sector can coexist with a low national exposure score because it is a small share of total employment. The map describes economy-wide labor transition. It does not capture concentrated disruption inside a specific exposed sector. For a country like India, the sector-level risk is real even though the national-aggregate signal is muted. This is a limitation of any country-level index, and it is worth stating plainly rather than reading the national number as the whole story.</p>
+
+        <p><strong>High Transition Capacity means two different things at the two ends of the map.</strong> Singapore and Burundi both score near the top on Transition Capacity, but for opposite reasons. Singapore is highly exposed and highly prepared, so it converts disruption into gain. Burundi is barely exposed at all, so there is almost nothing to convert. The formula rewards both. This is exactly why the Opportunity Score is necessary alongside it: Singapore scores 0.99, Burundi scores 0.00. Read alone, Transition Capacity flatters the least developed economies. Read with Opportunity, the insulation of the Left Behind is correctly distinguished from the readiness of the Frontier.</p>
+
+      </div>
+
+      <blockquote class="pull">The purpose of this framework is calibration, not classification. A strategy appropriate for a Leapfrog economy fails in a Vulnerable Zone.</blockquote>
+
+      <div class="prose">
+
+        <h2><span class="num">06</span>Implications for strategy and policy</h2>
+
+        <p>Generic national AI strategies ignore the difference between archetypes. They should not.</p>
+
+        <p>For <strong>Advanced Frontier</strong> economies, the labor transition is the central policy problem. AI productivity gains will materialize with or without intervention. Distribution will not. The priorities are transition infrastructure: portable benefits, continuous education systems, reskilling programs with real uptake. Compute sovereignty is also relevant — domestic AI capacity reduces dependence on foreign platforms and keeps the productivity dividend partially local.</p>
+
+        <p>For <strong>Vulnerable Zone</strong> economies, the window for strategic repositioning is short. On this map these are mostly middle-income economies in Latin America, the Caribbean, and the Balkans: exposed service sectors carrying moderate automation pressure without the preparedness to absorb it. The most practical near-term move is steering those exposed sectors toward human-in-the-loop AI functions: validation, annotation, fine-tuning, quality assurance. These are categories where AI creates demand rather than eliminating it. Building domestic digital and institutional capacity is the longer-term requirement, and it is precisely the dimension these economies currently score lowest on.</p>
+
+        <p>For <strong>Potential Leapfrog</strong> economies, the strategic opportunity is infrastructure. Green energy zoning, clear AI governance frameworks, and favorable data residency law attract international data center investment. That investment builds local engineering capacity over time. The transition from technology consumer to regional provider is achievable from this structural position. It requires deliberate policy choices to make it happen.</p>
+
+        <p>For <strong>Left Behind</strong> economies, sophisticated AI policy is not the starting point. The infrastructure deficits that create the Left Behind position are the same ones addressed by competent basic economic development: electricity grid reliability, broadband coverage, foundational digital literacy. Designing "an AI strategy" before those preconditions exist is displacement activity.</p>
+
+      </div>
+
+    </div>
+  </article>
+
+  <footer class="site-foot">
+    <div class="container">
+      <a class="brand" href="../../" aria-label="TaniT home">
+        <svg viewBox="0 0 120 160" role="img" aria-label="TaniT"><use href="#tanit-mark"/></svg>
+        <span class="wordmark">TaniT</span>
+      </a>
+      <span class="right">© 2026 TaniT · Saif Shabou</span>
+    </div>
+  </footer>
+
+</body>
+</html>

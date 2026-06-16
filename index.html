@@ -128,7 +128,16 @@ ul.feat li:nth-child(3)::before{background:var(--slate);}
   <ul class="feed" id="feed"></ul>
 </main>
 <script>
-const ARTICLES = [{"title": "After Retrieval", "url": "articles/after-retrieval/index.html", "date": "7 June 2026", "excerpt": "What schools and jobs become when knowledge is inferable. A short history of where knowledge has lived, from cave paintings to large language models.", "tags": ["AI", "LLMs", "Knowledge", "Education", "Epistemology", "Philosophy"]}, {"title": "The Compute Question", "url": "articles/the-compute-question/index.html", "date": "4 June 2026", "excerpt": "AI is becoming a geopolitical question. It runs on chips, inside buildings, powered by electricity \u2014 and whoever controls those things controls the future.", "tags": ["AI Infrastructure", "Geopolitics", "Data Centers", "Energy", "GPUs"]}, {"title": "The Blurry Space", "url": "articles/the-blurry-space/index.html", "date": "2 June 2026", "excerpt": "A decade between data science, code, and product \u2014 and how AI quietly turned that intersection into a place anyone can stand.", "tags": ["AI", "LLMs", "Product Management", "Machine Learning", "Open Source", "Symbolic AI"]}];
+const ARTICLES = [{"title": "After Retrieval", "url": "articles/after-retrieval/index.html", "date": "7 June 2026", "excerpt": "What schools and jobs become when knowledge is inferable. A short history of where knowledge has lived, from cave paintings to large language models.", "tags": ["AI", "LLMs", "Knowledge", "Education", "Epistemology", "Philosophy"]}, 
+{"title": "The Compute Question", "url": "articles/the-compute-question/index.html", "date": "4 June 2026", "excerpt": "AI is becoming a geopolitical question. It runs on chips, inside buildings, powered by electricity \u2014 and whoever controls those things controls the future.", "tags": ["AI Infrastructure", "Geopolitics", "Data Centers", "Energy", "GPUs"]}, 
+{"title": "The Blurry Space", "url": "articles/the-blurry-space/index.html", "date": "2 June 2026", "excerpt": "A decade between data science, code, and product \u2014 and how AI quietly turned that intersection into a place anyone can stand.", "tags": ["AI", "LLMs", "Product Management", "Machine Learning", "Open Source", "Symbolic AI"]},
+{
+  "title": "Beyond the Automation Panic",
+  "url": "articles/beyond-the-automation-panic/index.html",
+  "date": "June 2026",
+  "excerpt": "Single-number forecasts of AI job loss say little about any specific country. A two-axis method, exposure against Transition Capacity, does better.",
+  "tags": ["AI", "Labor Markets", "Economics", "Policy"]
+}];
 const allTags = [...new Set(ARTICLES.flatMap(a => a.tags))].sort();
 let active = new Set();
 
