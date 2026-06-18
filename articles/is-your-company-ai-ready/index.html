@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Is Your Company AI Ready? · TaniT</title>
+<meta name="description" content="The AI Transition Capacity Audit: score your organization on exposure and preparedness, read your archetype, and get a task-level plan for AI adoption and training." />
+
+<!-- Open Graph / Twitter (verify asset path matches your /assets folder) -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Is Your Company AI Ready?" />
+<meta property="og:description" content="Run the AI Transition Capacity Audit on your organization: score exposure and preparedness, read your archetype, and get a task-level plan." />
+<meta property="og:url" content="https://s-ai-f.github.io/TaniT/articles/ai-transition-capacity-audit/" />
+<meta property="og:image" content="https://s-ai-f.github.io/TaniT/assets/og-image.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Is Your Company AI Ready?" />
+<meta name="twitter:description" content="Run the AI Transition Capacity Audit on your organization: score exposure and preparedness, read your archetype, and get a task-level plan." />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F3VYE9PRH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8F3VYE9PRH');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #F5F0E8;
+    --ink: #1E2535;
+    --terra: #B0532E;
+    --teal: #2D8A7E;
+    --slate: #8A8580;
+    --slate-light: #D6D3CE;
+    --white: #FFFFFF;
+    --measure: 720px;
+    --container: 900px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Site bar ---------- */
+  .site-bar {
+    border-bottom: 1px solid var(--slate-light);
+  }
+  .site-bar .container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .brand svg { display: block; height: 36px; width: auto; }
+  .brand .wordmark {
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .site-bar .tag {
+    margin-left: auto;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  /* ---------- Article header ---------- */
+  article { padding-bottom: 96px; }
+
+  .article-head {
+    padding-top: 72px;
+    padding-bottom: 8px;
+  }
+  .article-head .measure { max-width: var(--measure); margin: 0 auto; }
+
+  .eyebrow {
+    color: var(--terra);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 24px;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: clamp(34px, 5.5vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    margin: 0 0 24px;
+  }
+
+  .dek {
+    font-weight: 300;
+    font-size: clamp(20px, 2.6vw, 24px);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 32px;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 15px;
+    color: var(--slate);
+    border-top: 1px solid var(--slate-light);
+    padding-top: 24px;
+  }
+  .meta .author { color: var(--ink); font-weight: 600; }
+  .meta .dot { color: var(--slate-light); }
+
+  /* ---------- Prose ---------- */
+  .prose { max-width: var(--measure); margin: 0 auto; }
+
+  .prose p { margin: 0 0 24px; }
+
+  .prose h2 {
+    font-weight: 600;
+    font-size: clamp(26px, 3.4vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 64px 0 24px;
+    padding-top: 8px;
+  }
+  .prose h2 .num {
+    color: var(--terra);
+    font-weight: 600;
+    margin-right: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .prose h3 {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.3;
+    margin: 40px 0 12px;
+  }
+
+  .prose strong { font-weight: 600; }
+
+  .prose a {
+    color: var(--terra);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  /* ---------- In brief ---------- */
+  .inbrief {
+    max-width: var(--measure);
+    margin: 40px auto 8px;
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-left: 3px solid var(--terra);
+    border-radius: 2px;
+    padding: 24px 28px;
+  }
+  .inbrief h4 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terra);
+  }
+  .inbrief ul { margin: 0; padding: 0; list-style: none; }
+  .inbrief li {
+    position: relative;
+    padding-left: 22px;
+    margin: 0 0 10px;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .inbrief li:last-child { margin-bottom: 0; }
+  .inbrief li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 11px;
+    width: 7px; height: 7px;
+    background: var(--teal);
+    border-radius: 50%;
+  }
+
+  /* ---------- Formula ---------- */
+  .formula-block {
+    max-width: var(--measure);
+    margin: 0 auto 24px;
+  }
+  .formula-label {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin: 0 0 10px;
+  }
+  .formula {
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-radius: 2px;
+    padding: 22px 24px;
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .formula .v { color: var(--terra); font-weight: 600; }
+  .formula sub { font-size: 0.66em; }
+  .radic { white-space: nowrap; }
+  .radic .vinc {
+    border-top: 2px solid var(--ink);
+    padding: 0 4px 0 2px;
+    margin-left: -2px;
+  }
+
+  /* ---------- Pull quote ---------- */
+  .pull {
+    max-width: var(--measure);
+    margin: 48px auto;
+    font-weight: 300;
+    font-size: clamp(23px, 3.2vw, 30px);
+    line-height: 1.32;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    padding-left: 24px;
+    border-left: 3px solid var(--teal);
+  }
+
+  /* ---------- Archetype grid ---------- */
+  .arch-grid {
+    max-width: var(--measure);
+    margin: 8px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .arch {
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-top: 3px solid var(--terra);
+    border-radius: 2px;
+    padding: 22px 22px 24px;
+  }
+  .arch--frontier  { border-top-color: var(--teal); }
+  .arch--leapfrog  { border-top-color: var(--teal); }
+  .arch--vulnerable{ border-top-color: var(--terra); }
+  .arch--behind    { border-top-color: var(--slate); }
+
+  /* Spatial axis hints around the 2x2 map */
+  .arch-axisnote {
+    max-width: var(--measure);
+    margin: 24px auto 8px;
+    font-size: 14px;
+    color: var(--slate);
+    letter-spacing: 0.01em;
+  }
+  .arch-axisnote strong { color: var(--ink); font-weight: 600; }
+  .arch h3 { margin: 0 0 4px; font-size: 19px; }
+  .arch .axes {
+    font-size: 13px;
+    color: var(--slate);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin: 0 0 12px;
+  }
+  .arch p { font-size: 16px; line-height: 1.55; margin: 0; }
+
+  /* ---------- Widget figure ---------- */
+  figure.widget {
+    margin: 48px auto 16px;
+    max-width: var(--container);
+  }
+  .widget-frame {
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-radius: 3px;
+    padding: 8px;
+    box-shadow: 0 1px 2px rgba(30,37,53,0.04);
+  }
+  .widget-frame iframe {
+    display: block;
+    width: 100%;
+    height: 520px;
+    border: 0;
+  }
+  figure.widget figcaption {
+    max-width: var(--measure);
+    margin: 18px auto 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--slate);
+  }
+  figure.widget figcaption .fignum { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Footer ---------- */
+  .site-foot {
+    border-top: 1px solid var(--slate-light);
+    padding: 40px 0 64px;
+  }
+  .site-foot .container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    color: var(--slate);
+    font-size: 14px;
+  }
+  .site-foot .brand .wordmark { font-size: 16px; }
+  .site-foot svg { height: 26px; }
+  .site-foot .right { margin-left: auto; }
+
+  /* ---------- References ---------- */
+  sup.ref { font-size: 0.62em; font-weight: 600; line-height: 0; }
+  sup.ref a { color: var(--terra); text-decoration: none; padding-left: 1px; }
+  .references {
+    max-width: var(--measure);
+    margin: 56px auto 0;
+    padding-top: 28px;
+    border-top: 1px solid var(--slate-light);
+  }
+  .references h2 {
+    font-size: 15px; font-weight: 600; margin: 0 0 16px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--slate);
+  }
+  .references ol { margin: 0; padding-left: 22px; }
+  .references li { font-size: 15px; line-height: 1.55; color: var(--slate); margin: 0 0 14px; }
+  .references li a { color: var(--terra); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; }
+  .references .rid { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Org rubric ---------- */
+  .rubric {
+    max-width: var(--measure);
+    margin: 8px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .rubric .card {
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-radius: 2px;
+    padding: 20px 20px 22px;
+  }
+  .rubric .card h4 {
+    margin: 0 0 14px; font-size: 12px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--terra); font-weight: 600;
+  }
+  .rubric .row { display: flex; gap: 10px; margin: 0 0 12px; font-size: 15px; line-height: 1.45; }
+  .rubric .row:last-child { margin-bottom: 0; }
+  .rubric .w {
+    flex: 0 0 auto; min-width: 30px; height: 22px; padding: 0 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--paper); border: 1px solid var(--slate-light); border-radius: 100px;
+    font-size: 12px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums;
+  }
+  .rubric .row b { font-weight: 600; }
+  @media (max-width: 640px){ .rubric { grid-template-columns: 1fr; } }
+
+  /* ---------- Self-assessment widget ---------- */
+  .assess {
+    max-width: var(--container);
+    margin: 32px auto 8px;
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .assess .head { padding: 22px 24px 4px; }
+  .assess .head h3 { margin: 0 0 4px; font-size: 20px; font-weight: 600; }
+  .assess .head p { margin: 0; font-size: 15px; color: var(--slate); }
+  .assess .grid { display: grid; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 760px){ .assess .grid { grid-template-columns: 1fr; } }
+  .assess .inputs { padding: 22px 24px; }
+  .assess .out { padding: 22px 24px; background: var(--paper); border-left: 1px solid var(--slate-light); }
+  @media (max-width: 760px){ .assess .out { border-left: 0; border-top: 1px solid var(--slate-light); } }
+  .assess .grp { margin: 0 0 22px; }
+  .assess .grp:last-child { margin-bottom: 0; }
+  .assess .grp > label { display:block; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink); margin: 0 0 12px; }
+  .assess .pct { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 10px; font-size: 14px; }
+  .assess .pct > span { flex: 1; color: var(--ink); line-height: 1.35; }
+  .assess .pct small { display:block; color: var(--slate); font-size: 12px; }
+  .assess .pct input { width: 70px; flex: 0 0 auto; padding: 6px 8px; border: 1px solid var(--slate-light); border-radius: 2px; font: inherit; font-size: 14px; text-align: right; background: var(--white); color: var(--ink); }
+  .assess .sum { font-size: 12px; color: var(--slate); margin: 4px 0 0; }
+  .assess .sum.bad { color: var(--terra); }
+  .assess .slider { margin: 0 0 16px; }
+  .assess .slider:last-child { margin-bottom: 0; }
+  .assess .slider .lab { display:flex; justify-content: space-between; font-size: 14px; margin: 0 0 4px; }
+  .assess .slider .lab b { font-weight: 600; }
+  .assess .slider .lab .val { color: var(--teal); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .assess .slider input[type=range]{ width: 100%; accent-color: var(--teal); margin: 0; }
+  .assess .scores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 18px; }
+  .assess .score { background: var(--white); border: 1px solid var(--slate-light); border-radius: 2px; padding: 10px 12px; }
+  .assess .score .k { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate); }
+  .assess .score .v { font-size: 22px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .assess .arch-out .badge { display:inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 11px; border-radius: 100px; }
+  .assess .arch-out h4 { margin: 12px 0 6px; font-size: 19px; }
+  .assess .arch-out p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .assess ul.acts { margin: 14px 0 0; padding: 0; list-style: none; }
+  .assess ul.acts li { position: relative; padding-left: 18px; font-size: 14px; line-height: 1.5; margin: 0 0 9px; color: var(--ink); }
+  .assess ul.acts li:last-child { margin-bottom: 0; }
+  .assess ul.acts li::before { content:""; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background: var(--teal); }
+  .assess .mini { margin: 18px 0 0; }
+  .assess .mini svg { width: 100%; max-width: 320px; height: auto; display:block; margin: 0 auto; }
+  .assess .note { font-size: 12px; color: var(--slate); padding: 0 24px 18px; margin: 0; }
+
+  /* ---------- Labs CTA ---------- */
+  .labs-cta {
+    max-width: var(--measure);
+    margin: 48px auto 0;
+    background: var(--white);
+    border: 1px solid var(--slate-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 2px;
+    padding: 22px 24px;
+  }
+  .labs-cta h4 { margin: 0 0 8px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+  .labs-cta p { margin: 0; font-size: 16px; line-height: 1.55; }
+  .labs-cta a { color: var(--terra); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ---------- Automate / Augment / Retain ---------- */
+  .aar { max-width: var(--measure); margin: 8px auto 24px; list-style: none; padding: 0; }
+  .aar li { position: relative; padding-left: 48px; margin: 0 0 16px; font-size: 17px; line-height: 1.6; }
+  .aar li:last-child { margin-bottom: 0; }
+  .aar .aar-ic { position: absolute; left: 0; top: 2px; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; background: var(--white); border: 1px solid var(--slate-light); }
+  .aar .aar-ic svg { width: 18px; height: 18px; display: block; }
+  .aar .ic-terra { color: var(--terra); }
+  .aar .ic-teal { color: var(--teal); }
+  .aar .ic-slate { color: var(--slate); }
+  .aar b { font-weight: 600; }
+
+  /* ---------- Audit timeline ---------- */
+  .timeline { max-width: var(--measure); margin: 28px auto 8px; list-style: none; padding: 0; }
+  .tl-step { position: relative; padding-left: 56px; padding-bottom: 28px; }
+  .tl-step:last-child { padding-bottom: 0; }
+  .tl-step::before { content: ""; position: absolute; left: 17px; top: 6px; bottom: 0; width: 2px; background: var(--slate-light); }
+  .tl-step:last-child::before { display: none; }
+  .tl-marker { position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--white); border: 2px solid var(--terra); color: var(--terra); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; font-variant-numeric: tabular-nums; z-index: 1; }
+  .tl-body h3 { margin: 5px 0 6px; font-size: 18px; font-weight: 600; }
+  .tl-body > p { margin: 0 0 10px; font-size: 16px; line-height: 1.55; }
+  .tl-output { background: var(--white); border: 1px solid var(--slate-light); border-left: 3px solid var(--teal); border-radius: 2px; padding: 11px 14px; font-size: 14.5px; line-height: 1.5; color: var(--ink); }
+  .tl-olabel { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin-bottom: 4px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    body { font-size: 18px; }
+    .article-head { padding-top: 48px; }
+    .arch-grid { grid-template-columns: 1fr; }
+    .formula { font-size: 19px; padding: 18px 16px; }
+    .widget-frame iframe { height: 460px; }
+    .prose h2 .num { display: block; margin: 0 0 4px; font-size: 16px; }
+  }
+</style>
+<style>
+  .subtitle { font-weight: 500; font-size: clamp(20px,2.6vw,26px); line-height:1.25; color: var(--terra); margin: 0 0 22px; letter-spacing:-0.01em; }
+</style>
+</head>
+<body>
+
+  <!-- Tanit mark, reused via <use> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="tanit-mark">
+        <circle cx="60" cy="26" r="16" fill="none" stroke="currentColor"
+                stroke-width="4.5" />
+        <line x1="16" y1="52" x2="104" y2="52" stroke="currentColor"
+              stroke-width="4.5" stroke-linecap="square" />
+        <path d="M60 60 L31 132 Q60 112 89 132 Z" fill="none" stroke="currentColor"
+              stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square" />
+      </g>
+    </defs>
+  </svg>
+
+  <header class="site-bar">
+    <div class="container">
+      <a class="brand" href="../../" aria-label="TaniT home">
+        <svg viewBox="0 0 120 160" role="img" aria-label="TaniT"><use href="#tanit-mark"/></svg>
+        <span class="wordmark">TaniT</span>
+      </a>
+      <span class="tag">Analysis</span>
+    </div>
+  </header>
+
+  <article>
+    <div class="container">
+
+      <div class="article-head">
+        <div class="measure">
+          <p class="eyebrow">For Organizations</p>
+          <h1>Is your company AI ready?</h1>
+          <p class="subtitle">The AI Transition Capacity Audit</p>
+          <p class="dek">The AI Transition Capacity Framework scored AI's impact on jobs across 124 economies. This piece turns that country-level framework into the AI Transition Capacity Audit: score your organization, read your archetype, and find where AI automates, where it augments, and where training matters most.</p>
+          <div class="meta">
+            <span class="author">Saif Shabou</span>
+            <span class="dot">·</span>
+            <span>June 2026</span>
+            <span class="dot">·</span>
+            <span>7 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="inbrief">
+        <h4>In brief</h4>
+        <ul>
+          <li>This applies the AI Transition Capacity Framework to a single organization. The companion piece builds the framework and applies it to 124 economies.</li>
+          <li>Score your workforce on exposure and preparedness, read your archetype, and decompose roles into automate, augment, or retain.</li>
+          <li>Most organizations are held back by the skills pillar, which is why training is usually the highest-leverage move, and a core TaniT Labs service.</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+        <h2><span class="num">01</span>From framework to audit</h2>
+
+        <p>The companion piece introduced the AI Transition Capacity Framework and applied it to 124 economies, in <a href="https://s-ai-f.github.io/TaniT/articles/beyond-the-automation-panic/index.html">The AI Transition Capacity Framework</a>. It measures how ready a workforce is for AI by combining two things: exposure, how much of the work sits in AI's path, and preparedness, whether the conditions exist to absorb it. From those two inputs it derives a Transition Capacity score and an Opportunity Score, and sorts each unit into one of four archetypes.</p>
+
+        <p>The framework is scale-independent. Exposure and preparedness are properties of any workforce, and a national score is just the organizations beneath it, aggregated. Point the same two measures at one company, one agency, or one team, and it lands on the same map. The difference is that an organization can act on the result. It can change its own preparedness and redesign its own roles. A country cannot do either quickly. An organization can. That is what makes the organizational version an audit rather than an observation.</p>
+
+        <h2><span class="num">02</span>Scoring your organization</h2>
+
+        <p>Placing an organization uses the same two inputs, estimated rather than imported from national statistics. Exposure comes from the mix of work the organization does. Preparedness comes from the conditions that determine whether it can act on AI well. The rubric below is the working version.</p>
+      </div>
+
+      <div class="rubric">
+        <div class="card">
+          <h4>Exposure (E)</h4>
+          <div class="row"><span class="w">0.8</span><span><b>High.</b> Roles built on language, data, and codified knowledge. Analysts, writers, marketing, software, customer support, finance and admin, legal research.</span></div>
+          <div class="row"><span class="w">0.5</span><span><b>Moderate.</b> Roles blending cognitive work with judgment, relationships, or physical presence. Managers, consultants, sales, teachers, clinicians, designers.</span></div>
+          <div class="row"><span class="w">0.2</span><span><b>Low.</b> Roles dominated by manual, physical, or high-touch interpersonal work. Field technicians, trades, logistics, frontline care, hospitality.</span></div>
+        </div>
+        <div class="card">
+          <h4>Preparedness (P)</h4>
+          <div class="row"><span class="w">1</span><span><b>Data and tooling.</b> Access to capable AI tools and usable, accessible data.</span></div>
+          <div class="row"><span class="w">2</span><span><b>Skills and literacy.</b> Practical AI competence spread across the workforce, not just a technical team.</span></div>
+          <div class="row"><span class="w">3</span><span><b>Change culture.</b> Leadership backing and a track record of absorbing new ways of working.</span></div>
+          <div class="row"><span class="w">4</span><span><b>Governance.</b> Usage policies, data protection, and risk controls that let people use AI safely.</span></div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Exposure is the headcount-weighted average of the role weights. Preparedness is the average of the four pillars, each rated from 0 to 4. Transition Capacity and the Opportunity Score then follow from the same two formulas used for countries, and the organization falls into one of the four archetypes.</p>
+
+        <p>The interactive tool below runs the full calculation. Enter your workforce's exposure mix, rate the four preparedness pillars, and it returns your Exposure and Preparedness scores, your Transition Capacity and Opportunity Score, the archetype you land in, and a short set of actions tuned to that position. It is a quick self-assessment, not a substitute for a full audit, but it is enough to see where your organization sits on the map.</p>
+      </div>
+
+      <div class="assess" id="assess">
+        <div class="head">
+          <h3>Place your organization</h3>
+          <p>Estimate your workforce mix, rate your readiness, and read your archetype. Indicative, not a substitute for a full audit.</p>
+        </div>
+        <div class="grid">
+          <div class="inputs">
+            <div class="grp">
+              <label>Workforce exposure mix (% of headcount)</label>
+              <div class="pct"><span>High exposure <small>language, data, codified knowledge</small></span><input type="number" id="ex-h" min="0" max="100" value="40" /></div>
+              <div class="pct"><span>Moderate exposure <small>cognitive work plus judgment or presence</small></span><input type="number" id="ex-m" min="0" max="100" value="35" /></div>
+              <div class="pct"><span>Low exposure <small>manual, physical, high-touch</small></span><input type="number" id="ex-l" min="0" max="100" value="25" /></div>
+              <p class="sum" id="sum">Shares total 100%.</p>
+            </div>
+            <div class="grp">
+              <label>Readiness, rate each from 0 to 4</label>
+              <div class="slider"><div class="lab"><b>Data and tooling</b><span class="val" id="v-p1">2</span></div><input type="range" id="p1" min="0" max="4" step="1" value="2" /></div>
+              <div class="slider"><div class="lab"><b>Skills and literacy</b><span class="val" id="v-p2">2</span></div><input type="range" id="p2" min="0" max="4" step="1" value="2" /></div>
+              <div class="slider"><div class="lab"><b>Change culture</b><span class="val" id="v-p3">2</span></div><input type="range" id="p3" min="0" max="4" step="1" value="2" /></div>
+              <div class="slider"><div class="lab"><b>Governance</b><span class="val" id="v-p4">2</span></div><input type="range" id="p4" min="0" max="4" step="1" value="2" /></div>
+            </div>
+          </div>
+          <div class="out">
+            <div class="scores">
+              <div class="score"><div class="k">Exposure E</div><div class="v" id="o-e">0.00</div></div>
+              <div class="score"><div class="k">Preparedness P</div><div class="v" id="o-p">0.00</div></div>
+              <div class="score"><div class="k">Transition Capacity</div><div class="v" id="o-tc">0.00</div></div>
+              <div class="score"><div class="k">Opportunity</div><div class="v" id="o-o">0.00</div></div>
+            </div>
+            <div class="arch-out">
+              <span class="badge" id="o-badge">Result</span>
+              <h4 id="o-name">Your archetype</h4>
+              <p id="o-diag">Adjust the inputs above to see your position.</p>
+              <ul class="acts" id="o-acts"></ul>
+            </div>
+            <div class="mini">
+              <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Your organization plotted by preparedness and exposure">
+                <line x1="160" y1="20" x2="160" y2="260" stroke="#D6D3CE" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="40" y1="140" x2="280" y2="140" stroke="#D6D3CE" stroke-width="1" stroke-dasharray="3 3"/>
+                <line x1="40" y1="260" x2="280" y2="260" stroke="#8A8580" stroke-width="1.5"/>
+                <line x1="40" y1="20" x2="40" y2="260" stroke="#8A8580" stroke-width="1.5"/>
+                <text x="100" y="74" text-anchor="middle" font-size="10" fill="#8A8580" font-family="Outfit, sans-serif"><tspan x="100" dy="0">Vulnerable</tspan><tspan x="100" dy="12">Zone</tspan></text>
+                <text x="220" y="74" text-anchor="middle" font-size="10" fill="#8A8580" font-family="Outfit, sans-serif"><tspan x="220" dy="0">Advanced</tspan><tspan x="220" dy="12">Frontier</tspan></text>
+                <text x="100" y="194" text-anchor="middle" font-size="10" fill="#8A8580" font-family="Outfit, sans-serif"><tspan x="100" dy="0">Left</tspan><tspan x="100" dy="12">Behind</tspan></text>
+                <text x="220" y="194" text-anchor="middle" font-size="10" fill="#8A8580" font-family="Outfit, sans-serif"><tspan x="220" dy="0">Latent</tspan><tspan x="220" dy="12">Frontier</tspan></text>
+                <text x="160" y="286" text-anchor="middle" font-size="11" fill="#1E2535" font-family="Outfit, sans-serif">Preparedness &#8594;</text>
+                <text x="16" y="140" text-anchor="middle" font-size="11" fill="#1E2535" font-family="Outfit, sans-serif" transform="rotate(-90 16 140)">Exposure &#8594;</text>
+                <circle id="org-dot" cx="160" cy="140" r="7" fill="#2D8A7E" stroke="#FFFFFF" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <p class="note">Indicative only. A full AI Transition Capacity Audit scores roles individually and decomposes them to the task level.</p>
+      </div>
+
+      <div class="prose">
+        <h2><span class="num">03</span>From diagnosis to action: the Transition Capacity Audit</h2>
+
+        <p>The archetype is the diagnosis. The audit is what turns it into a plan. An archetype describes the whole organization, but AI does not arrive at the level of the organization. It arrives at the level of the task. So the audit goes one level below the score. It decomposes each exposed role into its constituent tasks and asks one question of each: automate, augment, or retain.</p>
+      </div>
+
+      <ul class="aar">
+        <li><span class="aar-ic ic-terra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><line x1="10" y1="3" x2="10" y2="6"/><line x1="14" y1="3" x2="14" y2="6"/><line x1="10" y1="18" x2="10" y2="21"/><line x1="14" y1="18" x2="14" y2="21"/><line x1="18" y1="10" x2="21" y2="10"/><line x1="18" y1="14" x2="21" y2="14"/><line x1="3" y1="10" x2="6" y2="10"/><line x1="3" y1="14" x2="6" y2="14"/></svg></span><b>Automate.</b> Tasks a system can take over end to end, freeing the person for other work.</li>
+        <li><span class="aar-ic ic-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L13.4 8.6 L19 10 L13.4 11.4 L12 17 L10.6 11.4 L5 10 L10.6 8.6 Z"/><path d="M18.5 14 L19.1 16.4 L21.5 17 L19.1 17.6 L18.5 20 L17.9 17.6 L15.5 17 L17.9 16.4 Z"/></svg></span><b>Augment.</b> Tasks where AI raises the speed or quality of a person's work without replacing them. This is where most durable value sits, and where the Anthropic Economic Index finds the majority of real usage today.<sup class="ref"><a href="#ref1">1</a></sup></li>
+        <li><span class="aar-ic ic-slate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21 a7 7 0 0 1 14 0"/></svg></span><b>Retain.</b> Tasks that stay human, because of judgment, accountability, relationship, or tacit knowledge.</li>
+      </ul>
+
+      <div class="prose">
+
+        <p>This three-way split rests on the task-based approach to technological change, which analyzes labor impact at the level of tasks rather than whole jobs. In that framework, automation displaces labor from the specific tasks a machine can take over, while new and complementary tasks reinstate it elsewhere.<sup class="ref"><a href="#ref2">2</a></sup> Applied to AI, the same logic decomposes a role into tasks and sorts each by whether the technology substitutes for the work or complements it. That makes the classification the audit's actionable core. Each verdict routes somewhere concrete. Automate routes to tooling and process redesign. Augment routes to workflow integration and training. Retain routes to role redefinition and the reallocation of freed time.</p>
+
+        <p>Run end to end, the audit follows five steps, each producing a concrete output.</p>
+      </div>
+
+      <ol class="timeline">
+        <li class="tl-step">
+          <span class="tl-marker">1</span>
+          <div class="tl-body">
+            <h3>Map the workforce</h3>
+            <p>List roles, headcount, and the task content of each.</p>
+            <div class="tl-output"><span class="tl-olabel">Example output</span>Finance, 12 FTE: month-end close, invoice matching, variance commentary, board reporting.</div>
+          </div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-marker">2</span>
+          <div class="tl-body">
+            <h3>Score exposure and preparedness</h3>
+            <p>Place the organization on the map using the same two inputs as the framework.</p>
+            <div class="tl-output"><span class="tl-olabel">Example output</span>E = 0.62, P = 0.45. Transition Capacity 0.71. Archetype: Vulnerable Zone.</div>
+          </div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-marker">3</span>
+          <div class="tl-body">
+            <h3>Decompose and classify</h3>
+            <p>Break each exposed role into tasks and mark every task automate, augment, or retain.</p>
+            <div class="tl-output"><span class="tl-olabel">Example output</span>Invoice matching: automate. Variance commentary: augment. Board sign-off: retain.</div>
+          </div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-marker">4</span>
+          <div class="tl-body">
+            <h3>Prioritize</h3>
+            <p>Rank the opportunities by impact, feasibility, and risk, including EU AI Act exposure.</p>
+            <div class="tl-output"><span class="tl-olabel">Example output</span>First move: augment variance commentary. High impact, low risk, no AI Act exposure.</div>
+          </div>
+        </li>
+        <li class="tl-step">
+          <span class="tl-marker">5</span>
+          <div class="tl-body">
+            <h3>Plan</h3>
+            <p>Set the training, role restructuring, automation pilots, and governance, with owners and a timeline.</p>
+            <div class="tl-output"><span class="tl-olabel">Example output</span>Q3: workflow training for finance. Invoice-matching pilot owned by ops. Usage policy signed off by legal.</div>
+          </div>
+        </li>
+      </ol>
+
+      <div class="prose">
+
+        <h2><span class="num">04</span>Why training is the lever</h2>
+
+        <p>Look again at the four preparedness pillars. Data and tooling can be bought. Governance can be written. The pillar that moves slowest, and that most organizations score lowest on, is skills and literacy. It is also the one that decides whether any of the rest pays off.</p>
+
+        <p>The audit makes this concrete. Every task marked augment depends on a person knowing how to work with the tool well. An augment verdict without training is a tool nobody uses, or uses badly, which is how most AI pilots quietly fail. The classification identifies where the value is. Training is what realizes it. This is why preparedness, not exposure, is the lever an organization actually controls, and why raising the skills pillar is usually the highest-return move available.</p>
+
+        <p>It is also where the training has to be specific. Generic introductions to AI do not change how a finance team closes its books or how a clinical team handles its documentation. Workflow-led training, built around the team's real tasks, is what turns an augment classification into a changed way of working. That is the core of what TaniT Labs does.</p>
+      </div>
+
+      <div class="labs-cta">
+        <h4>Work with TaniT Labs</h4>
+        <p>TaniT Labs runs the AI Transition Capacity Audit end to end: workforce mapping, exposure and readiness scoring, and a task-level automate, augment, or retain plan. We then deliver the workflow-led training that closes the gap. To scope an audit or a training programme for your team, <a href="https://s-ai-f.github.io/TaniT/">get in touch</a>.</p>
+      </div>
+
+      <div class="references">
+        <h2>References</h2>
+        <ol>
+          <li id="ref1"><span class="rid">Anthropic (2025).</span> The Anthropic Economic Index. <a href="https://www.anthropic.com/economic-index">anthropic.com/economic-index</a></li>
+          <li id="ref2"><span class="rid">Acemoglu, D., &amp; Restrepo, P. (2019).</span> Automation and New Tasks: How Technology Displaces and Reinstates Labor. Journal of Economic Perspectives, 33(2), 3-30. <a href="https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3">aeaweb.org</a></li>
+        </ol>
+      </div>
+
+    </div>
+  </article>
+
+  <footer class="site-foot">
+    <div class="container">
+      <a class="brand" href="../../" aria-label="TaniT home">
+        <svg viewBox="0 0 120 160" role="img" aria-label="TaniT"><use href="#tanit-mark"/></svg>
+        <span class="wordmark">TaniT</span>
+      </a>
+      <span class="right">© 2026 TaniT · Saif Shabou</span>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var EW = { high:0.8, mod:0.5, low:0.2 };
+  var A = {
+    AF:{name:"Advanced Frontier", bg:"#2D8A7E", fg:"#FFFFFF",
+        diag:"Highly exposed and well equipped. The risk is complacency, not collapse.",
+        acts:["Redesign high-exposure workflows around augmentation, not headcount cuts.",
+              "Move freed capacity toward higher-value judgment and client work.",
+              "Upskill broadly so the whole workforce captures the gains.",
+              "Set governance now so fast adoption stays safe."]},
+    VZ:{name:"Vulnerable Zone", bg:"#B0532E", fg:"#FFFFFF",
+        diag:"Highly exposed, and readiness lags. Disruption can arrive before the capacity to absorb it.",
+        acts:["Treat AI literacy and basic governance as urgent.",
+              "Prioritize reskilling for the most exposed roles first.",
+              "Stand up data and tooling foundations in parallel.",
+              "Sequence change so adoption does not outrun trust."]},
+    LF:{name:"Latent Frontier", bg:"#C9A23F", fg:"#1E2535",
+        diag:"Well equipped, not yet heavily exposed. The opportunity is offensive, not defensive.",
+        acts:["Identify where AI could create new leverage or offerings.",
+              "Run targeted automation pilots in repetitive workflows.",
+              "Move into AI-enabled services ahead of peers.",
+              "Avoid over-investing in capacity you are not yet using."]},
+    LB:{name:"Left Behind", bg:"#1E2535", fg:"#FFFFFF",
+        diag:"Neither heavily exposed nor prepared. Time exists, but the gap widens if nothing is built.",
+        acts:["Start with data hygiene, tooling access, and basic digital literacy.",
+              "Build foundational AI literacy before advanced tools.",
+              "Pick one or two workflows to prove value.",
+              "Do not buy frontier capability you cannot absorb."]}
+  };
+  function $(id){ return document.getElementById(id); }
+  function n(id){ var v=parseFloat($(id).value); return isNaN(v)?0:v; }
+  function compute(){
+    var h=n('ex-h'), m=n('ex-m'), l=n('ex-l'), raw=h+m+l, tot=raw>0?raw:1;
+    var sum=$('sum');
+    if(raw>0 && Math.abs(raw-100)>0.5){ sum.textContent='Shares total '+Math.round(raw)+'%, normalized automatically.'; sum.className='sum bad'; }
+    else { sum.textContent='Shares total 100%.'; sum.className='sum'; }
+    var E=(h*EW.high + m*EW.mod + l*EW.low)/tot;
+    var p1=n('p1'),p2=n('p2'),p3=n('p3'),p4=n('p4');
+    $('v-p1').textContent=p1; $('v-p2').textContent=p2; $('v-p3').textContent=p3; $('v-p4').textContent=p4;
+    var P=(p1+p2+p3+p4)/16;
+    var TC=1 - E*(1-P), O=Math.sqrt(P*E);
+    $('o-e').textContent=E.toFixed(2); $('o-p').textContent=P.toFixed(2);
+    $('o-tc').textContent=TC.toFixed(2); $('o-o').textContent=O.toFixed(2);
+    var key=(E>=0.5)?(P>=0.5?'AF':'VZ'):(P>=0.5?'LF':'LB'), a=A[key];
+    var b=$('o-badge'); b.textContent=a.name; b.style.background=a.bg; b.style.color=a.fg;
+    $('o-name').textContent=a.name; $('o-diag').textContent=a.diag;
+    var ul=$('o-acts'); ul.innerHTML='';
+    a.acts.forEach(function(t){ var li=document.createElement('li'); li.textContent=t; ul.appendChild(li); });
+    var dot=$('org-dot');
+    if(dot){ dot.setAttribute('cx',(40+P*240).toFixed(1)); dot.setAttribute('cy',(260-E*240).toFixed(1)); dot.setAttribute('fill',a.bg); }
+  }
+  ['ex-h','ex-m','ex-l','p1','p2','p3','p4'].forEach(function(id){
+    var el=$(id); if(el){ el.addEventListener('input',compute); }
+  });
+  compute();
+})();
+</script>
+</body>
+</html>
