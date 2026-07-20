@@ -25,277 +25,8 @@
   gtag('config', 'G-8F3VYE9PRH');
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --paper: #F5F0E8;
-    --ink: #1E2535;
-    --terra: #B0532E;
-    --teal: #2D8A7E;
-    --slate: #8A8580;
-    --slate-light: #D6D3CE;
-    --white: #FFFFFF;
-    --measure: 720px;
-    --container: 900px;
-  }
+<link rel="stylesheet" href="../../assets/tokens.css" /><link rel="stylesheet" href="../../assets/ledger-prose.css" />
 
-  * { box-sizing: border-box; }
-
-  html { -webkit-text-size-adjust: 100%; }
-
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
-  .container {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ---------- Site bar ---------- */
-  .site-bar {
-    border-bottom: 1px solid var(--slate-light);
-  }
-  .site-bar .container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--ink);
-  }
-  .brand svg { display: block; height: 36px; width: auto; }
-  .brand .wordmark {
-    font-weight: 600;
-    font-size: 20px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .site-bar .tag {
-    margin-left: auto;
-    font-size: 13px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--slate);
-    font-weight: 500;
-  }
-
-  /* ---------- Article header ---------- */
-  article { padding-bottom: 96px; }
-
-  .article-head {
-    padding-top: 72px;
-    padding-bottom: 8px;
-  }
-  .article-head .measure { max-width: var(--measure); margin: 0 auto; }
-
-  .eyebrow {
-    color: var(--terra);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin: 0 0 24px;
-  }
-
-  h1 {
-    font-weight: 700;
-    font-size: clamp(34px, 5.5vw, 52px);
-    line-height: 1.08;
-    letter-spacing: -0.015em;
-    margin: 0 0 24px;
-  }
-
-  .dek {
-    font-weight: 300;
-    font-size: clamp(20px, 2.6vw, 24px);
-    line-height: 1.45;
-    color: var(--ink);
-    margin: 0 0 32px;
-  }
-
-  .meta {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    font-size: 15px;
-    color: var(--slate);
-    border-top: 1px solid var(--slate-light);
-    padding-top: 24px;
-  }
-  .meta .author { color: var(--ink); font-weight: 600; }
-  .meta .dot { color: var(--slate-light); }
-
-  /* ---------- Prose ---------- */
-  .prose { max-width: var(--measure); margin: 0 auto; }
-
-  .prose p { margin: 0 0 24px; }
-
-  .prose h2 {
-    font-weight: 600;
-    font-size: clamp(26px, 3.4vw, 32px);
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin: 64px 0 24px;
-    padding-top: 8px;
-  }
-  .prose h2 .num {
-    color: var(--terra);
-    font-weight: 600;
-    margin-right: 14px;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .prose h3 {
-    font-weight: 600;
-    font-size: 21px;
-    line-height: 1.3;
-    margin: 40px 0 12px;
-  }
-
-  .prose strong { font-weight: 600; }
-
-  .prose a {
-    color: var(--terra);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
-  }
-
-  /* ---------- In brief ---------- */
-  .inbrief {
-    max-width: var(--measure);
-    margin: 40px auto 8px;
-    background: var(--white);
-    border: 1px solid var(--slate-light);
-    border-left: 3px solid var(--terra);
-    border-radius: 2px;
-    padding: 24px 28px;
-  }
-  .inbrief h4 {
-    margin: 0 0 12px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--terra);
-  }
-  .inbrief ul { margin: 0; padding: 0; list-style: none; }
-  .inbrief li {
-    position: relative;
-    padding-left: 22px;
-    margin: 0 0 10px;
-    font-size: 17px;
-    line-height: 1.55;
-  }
-  .inbrief li:last-child { margin-bottom: 0; }
-  .inbrief li::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 11px;
-    width: 7px; height: 7px;
-    background: var(--teal);
-    border-radius: 50%;
-  }
-
-  /* ---------- Pull quote ---------- */
-  .pull {
-    max-width: var(--measure);
-    margin: 48px auto;
-    font-weight: 300;
-    font-size: clamp(23px, 3.2vw, 30px);
-    line-height: 1.32;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    padding-left: 24px;
-    border-left: 3px solid var(--teal);
-  }
-
-  /* ---------- Photo figure ---------- */
-  figure.photo {
-    margin: 48px auto 16px;
-    max-width: var(--container);
-  }
-  .photo-frame {
-    background: var(--white);
-    border: 1px solid var(--slate-light);
-    border-radius: 3px;
-    padding: 8px;
-    box-shadow: 0 1px 2px rgba(30,37,53,0.04);
-  }
-  .photo-frame img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 2px;
-  }
-  figure.photo figcaption {
-    max-width: var(--measure);
-    margin: 18px auto 0;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--slate);
-  }
-  figure.photo figcaption .fignum { color: var(--ink); font-weight: 600; }
-
-  /* ---------- Footer ---------- */
-  .site-foot {
-    border-top: 1px solid var(--slate-light);
-    padding: 40px 0 64px;
-  }
-  .site-foot .container {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    color: var(--slate);
-    font-size: 14px;
-  }
-  .site-foot .brand .wordmark { font-size: 16px; }
-  .site-foot svg { height: 26px; }
-  .site-foot .right { margin-left: auto; }
-
-  /* ---------- References ---------- */
-  .references {
-    max-width: var(--measure);
-    margin: 56px auto 0;
-    padding-top: 28px;
-    border-top: 1px solid var(--slate-light);
-  }
-  .references h2 {
-    font-size: 15px; font-weight: 600; margin: 0 0 16px;
-    letter-spacing: 0.16em; text-transform: uppercase; color: var(--slate);
-  }
-  .references ol { margin: 0; padding-left: 22px; }
-  .references li { font-size: 15px; line-height: 1.55; color: var(--slate); margin: 0 0 14px; }
-  .references li a { color: var(--terra); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; }
-  .references .rid { color: var(--ink); font-weight: 600; }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 640px) {
-    body { font-size: 18px; }
-    .article-head { padding-top: 48px; }
-    .prose h2 .num { display: block; margin: 0 0 4px; font-size: 16px; }
-  }
-</style>
 </head>
 <body>
 
@@ -351,7 +82,7 @@
       </div>
 
       <div class="prose">
-        <h2><span class="num">01</span>A quiet signal in the data</h2>
+        <h2>A quiet signal in the data</h2>
 
         <p>Something unusual is happening in Tunisia, and the government appears not to have noticed.</p>
 
@@ -368,7 +99,7 @@
       </figure>
 
       <div class="prose">
-        <h2><span class="num">02</span>Readiness lags behind appetite</h2>
+        <h2>Readiness lags behind appetite</h2>
 
         <p>The appetite runs ahead of the institutions meant to support it. On the IMF's AI Preparedness Index, which scores digital infrastructure, human capital and regulation, Tunisia sits at 0.47. That is ahead of Algeria and respectable for the region, but a long way behind the countries actually capturing AI's gains. The demand is entirely bottom-up, leaving national readiness halfway realized while the state remains largely absent.</p>
       </div>
@@ -381,19 +112,19 @@
       </figure>
 
       <div class="prose">
-        <h2><span class="num">03</span>What Tunisia has going for it</h2>
+        <h2>What Tunisia has going for it</h2>
 
         <p>This matters because AI is one of the few levers a small economy like Tunisia's can actually pull. The country has what the moment rewards: a large pool of francophone engineers, strong mathematical training, cheap proximity to a European market short of AI-capable talent, and a population already fluent in the tools. The opportunity here is tangible, transitioning Tunisia's established tech-offshoring model up the value chain from basic execution to building sophisticated AI systems, while absorbing a portion of the 30 percent of university graduates currently facing structural unemployment.</p>
 
         <p>Tunisia has already proved it can do this. InstaDeep, founded in Tunis in 2014 by two Tunisians, became one of the world's most respected applied-AI firms and was bought by Germany's BioNTech in 2023 for 682 million dollars, the largest technology acquisition in Africa's history. But while the company's engineers remained in Tunis, its corporate value largely evaporated from the local economy. InstaDeep incorporated in the United Kingdom, raised its capital abroad, and delivered its ultimate financial windfall to a German buyer. This single story encapsulates the broader structural challenge: Tunisia cultivates the talent, but foreign markets harvest the value.</p>
 
-        <h2><span class="num">04</span>Vision without mechanism</h2>
+        <h2>Vision without mechanism</h2>
 
         <p>This dynamic is not due to a lack of official vision. Tunisia enacted a pioneering Startup Act in 2018 and has drafted multiple national AI frameworks, including a strategy spanning 2026 to 2030. On paper, the ambition is clear; in practice, these documents function more like press announcements than operational strategy, lacking substantial public funding, concrete mechanisms to keep founders onshore, or a regulatory environment that supports domestic scaling.</p>
 
         <p>The cost of this drift is substantial. Every month without actionable policy, Tunisia's most capable young engineers hone their skills, only to be hired by foreign firms. On this trajectory, the impressive Anthropic usage figures cease to be a triumph; they become a metric of how much free, highly trained talent Tunisia is exporting to Europe.</p>
 
-        <h2><span class="num">05</span>Closing the departure gates</h2>
+        <h2>Closing the departure gates</h2>
 
         <p>Reversing this trend does not require a mystery solution, but it does demand political will. Local founders and tech advocates argue that the 2026 strategy must be backed by a national AI fund designed specifically to keep startups, and their tax bases, at home. Crucially, the state must reform the rigid currency and capital regulations that forced companies like InstaDeep offshore in the first place.</p>
 

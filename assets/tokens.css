@@ -1,0 +1,30 @@
+/* TaniT — Ledger identity: shared design tokens.
+   One source of truth for color and type, imported by every stylesheet on the site. */
+:root{
+  --paper:#FFFFFF;
+  --paper-raised:#FFFFFF;
+  --bar:#E3ECE2;
+  --ink:#14171B;
+  --soft:#3C4048;
+  --muted:#7A7566;
+  --rule:#C6C2B6;
+  --red:#A6231D;
+  --red-soft:rgba(166,35,29,.10);
+
+  --serif: Cambria, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#14161A;
+    --paper-raised:#1B1E23;
+    --bar:#1E2721;
+    --ink:#ECEAE2;
+    --soft:#C8C4B8;
+    --muted:#8B8778;
+    --rule:rgba(236,234,226,.16);
+    --red:#E2564C;
+    --red-soft:rgba(226,86,76,.12);
+  }
+}
