@@ -20,6 +20,16 @@ body{margin:0;background:var(--paper);color:var(--ink);
 .brand .wordmark{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:-.005em;}
 .site-bar .tag{margin-left:auto;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--muted);}
+.site-bar-right{margin-left:auto;display:flex;align-items:center;gap:18px;}
+.site-bar-right .tag{margin-left:0;}
+
+/* ---------- language toggle ---------- */
+.lang-toggle{display:flex;align-items:center;gap:6px;font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;}
+.lang-toggle a{color:var(--muted);text-decoration:none;}
+.lang-toggle a.active{color:var(--ink);font-weight:600;}
+.lang-toggle a:not(.active):hover{color:var(--ink);text-decoration:underline;text-underline-offset:2px;}
+.lang-toggle .sep{color:var(--rule);}
 
 /* ---------- article header ---------- */
 article{padding-bottom:90px;}
